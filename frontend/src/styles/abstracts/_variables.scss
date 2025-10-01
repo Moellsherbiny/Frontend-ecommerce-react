@@ -1,0 +1,98 @@
+// Colors
+$color-primary: #FFFFFF;
+$color-primary-1:#2F2E30;
+$color-secondary: #F5F5F5;
+$color-secondary-1: #DB4444;
+$color-dark: #000000;
+$color-green: #00FF66;
+$color-red: #FB1314;
+$color-text: #FAFAFA;
+$color-hover-button: #A0BCE0;
+
+
+$font-family-inter:"Inter", sans-serif;
+$font-family-poppins: 'Poppins', sans-serif;
+
+// Font Sizes
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;     // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+$font-size-2xl: 1.5rem;    // 24px
+$font-size-3xl: 2rem;      // 32px
+$font-size-4xl: 2.5rem;    // 40px
+$font-size-5xl: 3rem;      // 48px
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-black: 900;
+
+
+// Line Heights
+$line-height-tight: 1.25;
+$line-height-snug: 1.375;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.625;
+$line-height-loose: 2;
+
+// Spacing Scale
+$spacing-xs: 0.25rem;    // 4px
+$spacing-sm: 0.5rem;     // 8px
+$spacing-md: 1rem;       // 16px
+$spacing-lg: 1.5rem;     // 24px
+$spacing-xl: 2rem;       // 32px
+$spacing-2xl: 3rem;      // 48px
+$spacing-3xl: 4rem;      // 64px
+$spacing-4xl: 6rem;      // 96px
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$large-desktop: 1200px;
+$xlarge-desktop: 1400px;
+
+
+// Container
+$container-max-width: 1200px;
+$container-padding: $spacing-md;
+
+// Borders & Radius
+$border-width: 1px;
+
+$border-radius-sm: 0.25rem;   // 4px
+$border-radius: 0.5rem;       // 8px
+$border-radius-lg: 1rem;      // 16px
+$border-radius-full: 50%;
+
+// Z-index Scale
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-base: 300ms ease;
+$transition-slow: 500ms ease;
+
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+}

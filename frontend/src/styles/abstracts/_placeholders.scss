@@ -1,0 +1,30 @@
+%container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+%button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+%list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+%link-reset {
+  text-decoration: none;
+  color: inherit;
+}
+
+%sr-only {
+  @include visually-hidden;
+}
