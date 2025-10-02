@@ -1,6 +1,5 @@
 
-
-function HomePage() {
+function Account() {
   return (
     <div>
       
@@ -8,4 +7,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export default Account

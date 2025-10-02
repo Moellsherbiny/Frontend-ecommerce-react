@@ -11,7 +11,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: $font-weight-bold;
   line-height: $line-height-tight;
   margin-bottom: $spacing-md;
-  color: #000000;
 }
 
 h1 {
@@ -64,15 +63,14 @@ h6 {
 
 // Paragraphs
 p {
-  
   margin-bottom: $spacing-md;
   line-height: $line-height-relaxed;
 }
 
 
 a {
-  color: #000000;
   text-decoration: none;
+  color: $color-text;
 }
 
 // Text utilities
@@ -100,7 +98,4 @@ a {
   color: $color-text;
 }
 
-.text-secondary {
-  color: $color-secondary;
-}
 

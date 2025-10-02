@@ -1,6 +1,6 @@
 
 
-function HomePage() {
+function Wishlist() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export default Wishlist

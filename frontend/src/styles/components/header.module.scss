@@ -1,0 +1,80 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #fff;
+  border: 0.5px solid rgba($color: $color-dark, $alpha: 0.3);
+
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.links {
+  ul{
+    display: flex;
+    gap: 1rem;
+    li{
+        a{
+         color: #000;   
+        }
+    }
+  }
+  .ant-menu {
+    border-bottom: none;
+  }
+
+  .ant-menu-item {
+    font-size: 1rem;
+    padding: 0 1.2rem;
+  }
+}
+
+.shop{
+    display: flex;
+    align-items: center;
+    gap: 1rem
+}
+.active {
+  border-bottom: 2px solid black !important;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search {
+  width: 220px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.menuBtn {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: inline-flex;
+  }
+}
+
+/* Hide desktop links on mobile */
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+}
