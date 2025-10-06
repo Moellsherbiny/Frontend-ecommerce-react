@@ -4,6 +4,7 @@
 .topHeader{
     background-color: #000000;
     .container{
+    position:relative;
     color: $color-primary;
     text-align: center ;
     font-size: $font-size-sm;
@@ -25,7 +26,7 @@
         .language{
             position: absolute;
             top: 50%;
-            right: $container-padding *2;
+            right: $container-padding;
             
             transform: translateY(-50%);
             cursor: pointer;

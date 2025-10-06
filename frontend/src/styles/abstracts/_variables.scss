@@ -59,8 +59,8 @@ $xlarge-desktop: 1400px;
 
 
 // Container
-$container-max-width: 1200px;
-$container-padding: $spacing-md;
+$container-max-width: 1170px;
+$container-padding: $spacing-lg;
 
 // Borders & Radius
 $border-width: 1px;
@@ -84,6 +84,48 @@ $transition-fast: 150ms ease;
 $transition-base: 300ms ease;
 $transition-slow: 500ms ease;
 
+
+
+// Heading
+.headingMedium{
+  font-family: 'inter', sans-serif;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 30px;
+  letter-spacing: 2px;
+  color: #000000;
+}
+
+.headingBold{
+  font-family: 'inter', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 2px;
+  color: #000000;
+}
+
+.headingSemiBold{
+  font-family: 'inter', sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 2px;
+  color: #000000;
+}
+
+.titleRegular{
+  font-family: 'poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.titleMedium{
+  font-family: 'poppins', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
 
 .container {
   max-width: $container-max-width;

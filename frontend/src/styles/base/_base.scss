@@ -1,7 +1,7 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-// Main container class
+
 .container {
   width: 100%;
   max-width: $container-max-width; 

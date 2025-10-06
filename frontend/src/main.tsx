@@ -1,14 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {BrowserRouter} from 'react-router'
-import { HelmetProvider } from 'react-helmet-async'
 import { ConfigProvider } from 'antd'
 import App from './App.tsx'
 import "./styles/main.scss"
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
       <BrowserRouter>
-    <HelmetProvider>
+
       <ConfigProvider
         theme={{
           token:{
@@ -21,7 +20,6 @@ createRoot(document.getElementById('root')!).render(
         >
         <App />
         </ConfigProvider>
-      </HelmetProvider>
       </BrowserRouter>
   </StrictMode>,
 )

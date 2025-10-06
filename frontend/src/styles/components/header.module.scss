@@ -1,14 +1,15 @@
-@use "../abstracts/variables" as *;
-@use "../abstracts/mixins" as *;
+@use "../abstracts/variables"as *;
+@use "../abstracts/mixins"as *;
 
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background: #fff;
+.header {
   border: 0.5px solid rgba($color: $color-dark, $alpha: 0.3);
 
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
 }
 
 .logo {
@@ -17,15 +18,17 @@
 }
 
 .links {
-  ul{
+  ul {
     display: flex;
     gap: 1rem;
-    li{
-        a{
-         color: #000;   
-        }
+
+    li {
+      a {
+        color: #000;
+      }
     }
   }
+
   .ant-menu {
     border-bottom: none;
   }
@@ -36,11 +39,12 @@
   }
 }
 
-.shop{
-    display: flex;
-    align-items: center;
-    gap: 1rem
+.shop {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
+
 .active {
   border-bottom: 2px solid black !important;
 }
@@ -52,8 +56,29 @@
 }
 
 .search {
+  position: relative;
   width: 220px;
-
+  padding: 8px 12px;
+  background-color: $color-secondary;
+  border-radius: 4px;
+  input{
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+  }
+  button{
+    position: absolute;
+    right: 10px;
+    top: 55%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  ;
+  }
   @media (max-width: 768px) {
     display: none;
   }

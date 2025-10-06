@@ -1,14 +1,12 @@
 import React from "react";
-import { Footer as AntFooter } from "antd/es/layout/layout";
-import { Row, Col, Typography, Input, Button, Space } from "antd";
 import styles from "../../styles/components/footer.module.scss";
-import { Link } from "react-router";
-const { Title, Text } = Typography;
+import { Link } from "react-router"
 import googlePlay from "../../assets/images/google-play.png";
 import appStore from "../../assets/images/app-store.png";
+import { GoPaperAirplane } from "react-icons/go";
 
 // Account Links
-export const accountLinks = [
+const accountLinks = [
   { label: "My Account", to: "#" },
   { label: "Login / Register", to: "#" },
   { label: "Cart", to: "#" },
@@ -16,7 +14,7 @@ export const accountLinks = [
   { label: "Shop", to: "#" },
 ];
 
-export const quickLinks = [
+const quickLinks = [
   { label: "Privacy Policy", to: "#" },
   { label: "Terms Of Use", to: "#" },
   { label: "FAQ", to: "#" },
@@ -24,7 +22,7 @@ export const quickLinks = [
 ];
 
 
-export const socialLinks = [
+const socialLinks = [
   { icon: "fa-facebook-f", to: "#" },
   { icon: "fa-twitter", to: "#" },
   { icon: "fa-instagram", to: "#" },
@@ -37,80 +35,104 @@ export const socialLinks = [
 const Footer: React.FC = () => {
   return (
     <>
-    <AntFooter className={styles.footer}>
-      {/* Main Content */}
-      <Row gutter={[32, 32]}  className={styles.footerContent}>
-        {/* Exclusive */}
-        <Col xs={24} sm={12} md={6}>
-          <Title level={4}>Exclusive</Title>
-          <Title level={5}>Subscribe</Title>
-          <Text>Get 10% off your first order</Text>
-          <form className={styles.subscribeForm}>
-            <Input type="email" placeholder="Enter your email" required />
-            <Button type="primary" htmlType="submit">
-              <i className="fa-solid fa-paper-plane"></i>
-            </Button>
-          </form>
-        </Col>
+      <footer className={styles.footer}>
+        <div className={styles.container}>
 
-        {/* Support */}
-        <Col xs={24} sm={12} md={6}>
-          <Title color="#fff" level={5}>Support</Title>
-          <p>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
-          <br />
-          <Link to="mailto:exclusive@gmail.com">exclusive@gmail.com</Link>
-          <br />
-          <Link to="tel:+8801234567890">+8801234567890</Link>
-        </Col>
+          <div className={styles.footerContent}>
 
-        {/* Account */}
-        <Col xs={24} sm={12} md={4}>
-          <Title level={5}>Account</Title>
-          <ul>
-            {accountLinks.map((link, idx) => (
-              <li key={idx}>
-                <Link to={link.to}>{link.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </Col>
+            <div className={styles.section}>
+              <h4 className={styles.headingBold} >Exclusive</h4>
+              <div className={styles.sectionContent}>
+                <h5 className={styles.titleMedium} >Subscribe</h5>
+                <span className={styles.titleRegular}>Get 10% off your first order</span>
+                
+                <form className={styles.subscribeForm}>
+                  <input type="email" placeholder="Enter your email" required />
+                  <button type="submit" >
+                   <GoPaperAirplane size={24} />
+                  </button>
+                </form>
+              
+              </div>
+            </div>
 
-        {/* Quick Links */}
-        <Col xs={24} sm={12} md={4}>
-          <Title level={5}>Quick Links</Title>
-          <ul>
-            {quickLinks.map((link, idx) => (
-              <li key={idx}>
-                <Link to={link.to}>{link.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </Col>
+            {/* Support */}
+            <div className={styles.section}>
+              <h5 className={styles.titleMedium} >Support</h5>
+              <div className={styles.sectionContent}>
 
-        {/* Download App */}
-        <Col xs={24} sm={12} md={4}>
-          <Title level={5}>Download App</Title>
-          <p>Save $3 with App New User Only</p>
-          <Space direction="vertical" style={{ marginTop: "1rem", width: "75%"}}>
-            <img src={googlePlay} alt="Google Play Store" />
-            <img src={appStore} alt="Apple App Store" />
-          </Space>
-          <div className={styles.socialLinks}>
-            {socialLinks.map((link, idx) => (
-              <Link to={link.to} key={idx}>
-                <i className={`fa-brands ${link.icon}`}></i>
-              </Link>
-            ))}
+                <ul>
+                  <li>
+                    <p className={styles.titleRegular}>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
+                  </li>
+                  <li>
+                    <Link to="mailto:exclusive@gmail.com">exclusive@gmail.com</Link>
+                  </li>
+                  <li>
+                    <Link to="tel:+8801234567890">+8801234567890</Link>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+            {/* Account */}
+            <div className={styles.section}>
+              <h5 className={styles.titleMedium} >Account</h5>
+              <div className={styles.sectionContent}>
+                <ul>
+                  {accountLinks.map((link, idx) => (
+                    <li key={idx}>
+                      <Link to={link.to}>{link.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className={styles.section}>
+              <h5 className={styles.titleMedium} >Quick Links</h5>
+              <div className={styles.sectionContent}>
+
+                <ul>
+                  {quickLinks.map((link, idx) => (
+                    <li key={idx}>
+                      <Link to={link.to}>{link.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+            </div>
+
+            {/* Download App */}
+            <div className={styles.section}>
+              <h5 className={styles.titleMedium} >Download App</h5>
+              <div className={styles.sectionContent}>
+                <span className={styles.titleMedium12PX}>Save $3 with App New User Only</span>
+
+                <div className={styles.downloadLinks}>
+                  <img src={googlePlay} alt="Google Play Store" />
+                  <img src={appStore} alt="Apple App Store" />
+                </div>
+
+                <div className={styles.socialLinks}>
+                  {socialLinks.map((link, idx) => (
+                    <Link to={link.to} key={idx}>
+                      <i className={`fa-brands ${link.icon}`}></i>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-        </Col>
-      </Row>
 
-    </AntFooter>
-      {/* Bottom Footer */}
-      <div className={styles.bottomFooter}>
-        <p>&copy; copyright Exclusive 2025. All rights reserved.</p>
-      </div>
-                </>
+        </div>
+        <div className={styles.bottomFooter}>
+          <p>&copy; copyright Exclusive 2025. All rights reserved.</p>
+        </div>
+      </footer>
+    </>
   );
 };
 
