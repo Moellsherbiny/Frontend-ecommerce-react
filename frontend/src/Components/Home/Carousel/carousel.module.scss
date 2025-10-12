@@ -1,0 +1,111 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+.carousel {
+    margin-top: 32px;
+    width: 75%;
+  .item {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 16px 64px;
+    overflow: hidden;
+    .imageContainer {
+      width: 60%;;
+      img {
+        width: 100%;
+      }
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 40px;
+      padding: 50px 0px;
+      .headingSemiBold{
+        color: $color-primary;
+        font-size: 48px;
+      }
+
+      .brand{
+        display: flex;
+        align-items: center;
+        gap: 24px ;
+        .titleRegualar{
+          position: relative;
+          top: 3px;
+          font-size: 24px;
+        
+        }
+      }
+    }
+
+  }
+}
+
+@include desktop{
+  .carousel{
+    width: 100%;
+    .item{
+      padding: 10px;
+      .imageContainer{
+        position: relative;
+        top: 1px;
+        width: 50%;
+      }
+      .info{
+        gap: 1px;
+        padding: 10px 5px;
+        .brand{
+          gap: 5px;
+          .titleRegualar{
+            font-size: 14px;
+          }
+          svg{
+            width: 24px;
+            height: 24px;
+          }
+        }
+        .headingSemiBold{
+          font-size: 24px;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+}
+
+
+
+@include mobile{
+  .carousel{
+    width: 100%;
+    .item{
+      padding: 40px 20px;
+      .imageContainer{
+        position: relative;
+        top: 1px;
+        width: 50%;
+      }
+      .info{
+        gap: 10px;
+        padding: 10px 5px;
+        .brand{
+          gap: 5px;
+          .titleRegualar{
+            font-size: 12px;
+          }
+          svg{
+            width: 24px;
+            height: 24px;
+          }
+        }
+        .headingSemiBold{
+          font-size: 16px;
+          letter-spacing: 1px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+@use "../../../styles//abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.flashSales {
+
+  &__header {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 2rem;
+
+ 
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+  }
+  &__timer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    div {
+      text-align: center;
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      span {
+        font-size: 0.8rem;
+        color: #666;
+      }
+    }
+
+    span {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #db4444;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(270px, 1fr));
+    gap: 30px;
+    margin-bottom: 2.5rem;
+    overflow-x: auto;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__btn {
+    background: #db4444;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+
+    &:hover {
+      background: #b63333;
+    }
+  }
+}
+
+// @include tablet{
+//     .flashSales{
+//         &__grid{
+//             grid-template-columns: 1fr 1fr;
+//         }
+//     }
+// }
+
+// @include mobile{
+//     .flashSales{
+//         &__header{
+//             flex-direction: column;
+//             align-items: start;
+//             gap: 1rem
+//         }
+//         &__grid{
+//             grid-template-columns: 1fr ;
+//         }
+//     }}

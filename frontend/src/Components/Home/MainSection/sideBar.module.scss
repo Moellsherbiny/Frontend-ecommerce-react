@@ -1,0 +1,32 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+.sidebarContainer {
+    position: relative;
+    top: -4px;
+    border-inline-end: 0.5px solid rgba($color: $color-dark, $alpha: 0.5);
+    width: 20%;
+    padding-top: 18px;
+  .sidebar {
+    li,
+    div {
+      margin-left: 0;
+      padding: 0 !important;
+      margin-inline: 0 !important;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+  .cates {
+    display: none;
+  }
+}
+@include desktop {
+  .sidebarContainer {
+    .sidebar {
+      display: none;
+    }
+    .cates {
+      display: block;
+    }
+  }
+}

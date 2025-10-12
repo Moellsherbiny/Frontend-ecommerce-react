@@ -1,0 +1,17 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins" as *;
+.home{
+    .main{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+    }
+}
+
+@include desktop{
+    .home{
+        .main{
+            flex-direction: column;
+        }
+}}

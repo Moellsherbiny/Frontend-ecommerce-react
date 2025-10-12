@@ -1,0 +1,20 @@
+.ourProducts{
+    &__productsContainer{
+        display: grid;
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        gap: 30px;
+    }
+    &__btnContainer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 30px 0;
+    }
+    &__button{
+        margin: 30px auto;
+        padding: 30px 50px;
+     
+    }
+}
+
+

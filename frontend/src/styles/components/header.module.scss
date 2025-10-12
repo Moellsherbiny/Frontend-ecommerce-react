@@ -2,8 +2,8 @@
 @use "../abstracts/mixins"as *;
 
 .header {
-  border: 0.5px solid rgba($color: $color-dark, $alpha: 0.3);
-
+  border-bottom: 0.5px solid rgba($color: $color-dark, $alpha: 0.3);
+  margin-top: 16px;
   .navbar {
     display: flex;
     align-items: center;
@@ -46,7 +46,7 @@
 }
 
 .active {
-  border-bottom: 2px solid black !important;
+  border-bottom: 1px solid rgba($color: $color-dark, $alpha: 0.5);
 }
 
 .actions {
