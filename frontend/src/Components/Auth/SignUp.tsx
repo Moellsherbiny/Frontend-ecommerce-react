@@ -1,17 +1,12 @@
-// import { useState } from "react";
 import { Button } from "antd"
-import AuthLayout from "./AuthLayout"
-import Input from "../common/Input";
-import authStyles from "./auth.module.scss"
+import AuthLayout from "@/Components/Auth/AuthLayout"
+import Input from "@/Components/common/Input";
+import authStyles from "@/Components/Auth/auth.module.scss"
 import { Link } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 
 
 function SignUp() {
-  // const [emailOrPhone, setEmailOrPhone] = useState("")
-  // const [password, setPassword] = useState("")
-
-
   return (
     <AuthLayout >
       <form className={authStyles.form}>

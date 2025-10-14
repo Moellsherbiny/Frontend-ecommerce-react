@@ -1,22 +1,24 @@
 import type { ReactNode } from "react"
-import TopHeader from "./TopHeader"
-import Navbar from "./Navbar"
-import Footer from "./Footer"
-import styles from "./layout.module.scss"
+import TopHeader from "@/Components/Layout/TopHeader"
+import Navbar from "@/Components/Layout/Navbar"
+import Footer from "@/Components/Layout/Footer"
+import styles from "@/Components/Layout/layout.module.scss"
+import  Breadcrumb  from "@/Components/Layout/Breadcrumb"
 
-function index({children}:{children:ReactNode}) {
+function AppLayout({children}:{children:ReactNode}) {
+
   return (
     <>
         <TopHeader/>
         <Navbar/>
         <main >
-          <div className={styles.container}>
+  
+            {/* <Breadcrumb /> */}
             {children}
-          </div>
         </main>
         <Footer/>
     </>
   )
 }
 
-export default index
+export default AppLayout

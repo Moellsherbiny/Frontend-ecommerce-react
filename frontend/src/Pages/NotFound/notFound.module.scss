@@ -1,0 +1,63 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins" as *; 
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  min-height: 50vh;
+}
+
+
+.content {
+  text-align: center;
+  .headingMedium{
+    font-family: 'inter', sans-serif;
+    font-weight: 500;
+    font-size: 110px;
+    line-height: 115px;
+    letter-spacing: 2px;
+  }
+  p {
+    color: #555;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.homeBtn {
+  background-color: #db4444 !important;
+  border: none !important;
+  height: 40px;
+  padding: 0 1.5rem;
+  color: #fff !important;
+  font-weight: 500;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #c03a3a !important;
+  }
+}
+
+@include tablet{
+    .content{
+        .headingMedium{
+            font-size: 60px;
+            line-height: 65px
+        }
+    }
+}
+
+@include mobile{
+      .content{
+        .headingMedium{
+            font-size: 32px;
+            line-height: 35px
+        }
+        
+    }
+}

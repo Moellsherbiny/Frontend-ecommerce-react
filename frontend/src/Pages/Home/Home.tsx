@@ -1,14 +1,14 @@
 import styles from "./home.module.scss"
-import Carousel from "../../Components/Home/Carousel"
-import Sidebar from "../../Components/Home/MainSection/Sidebar"
-import type { CarouselItem } from "../../types/carousel"
+import Carousel from "@/Components/Home/Carousel"
+import Sidebar from "@/Components/Home/MainSection/Sidebar"
+import type { CarouselItem } from "@/types/carousel"
 import { FaApple } from "react-icons/fa";
-import FlashSales from "../../Components/Home/FlashSales/FlashSales";
-import Featured from "../../Components/Home/Featured/Featured";
-import ThisMonth from "../../Components/Home/ThisMonth/ThisMonth";
-import Categories from "../../Components/Home/Categories/Categories";
-import MainBanner from "../../Components/Home/MainBanner";
-import OurProducts from "../../Components/Home/OurProducts/OurProducts";
+import FlashSales from "@/Components/Home/FlashSales/FlashSales";
+import Featured from "@/Components/Home/Featured/Featured";
+import ThisMonth from "@/Components/Home/ThisMonth/ThisMonth";
+import Categories from "@/Components/Home/Categories/Categories";
+import MainBanner from "@/Components/Home/MainBanner";
+import OurProducts from "@/Components/Home/OurProducts/OurProducts";
 
 
 const carouselItems: CarouselItem[] =[
@@ -36,6 +36,8 @@ function HomePage() {
 
 
   return (
+    <div className="container">
+
     <div className={styles.home}>
       <div className={styles.main}>
         <Sidebar/>
@@ -47,6 +49,7 @@ function HomePage() {
       <MainBanner/>
       <OurProducts/>
       <Featured/>
+    </div>
     </div>
   )
 }
