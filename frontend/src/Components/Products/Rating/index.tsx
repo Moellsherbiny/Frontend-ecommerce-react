@@ -1,4 +1,4 @@
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import styles from "./rating.module.scss"
 
 type RatingProps = {

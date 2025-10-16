@@ -1,6 +1,6 @@
+import Services from "@/Components/common/Services/Services";
 import SectionTitle from "../SectionTitle";
 import styles from "./featured.module.scss";
-import { LiaShippingFastSolid } from "react-icons/lia";
 
 function Featured() {
     return (
@@ -61,35 +61,7 @@ function Featured() {
                 </div>
             </div>
 
-            <div className={styles.featured__info}>
-                <div className={styles.featured__info__item}>
-                    <div className={styles.featured__info__icon}>
-                        <LiaShippingFastSolid size={40} />
-                    </div>
-                    <div className={styles.featured__info__content}>
-                        <h5>FREE AND FAST DELIVERY</h5>
-                        <p>Free delivery for all orders over $140</p>
-                    </div>
-                </div>
-                <div className={styles.featured__info__item}>
-                    <div className={styles.featured__info__icon}>
-                        <LiaShippingFastSolid size={40} />
-                    </div>
-                    <div className={styles.featured__info__content}>
-                        <h5>24/7 CUSTOMER SERVICE</h5>
-                        <p>Friendly 24/7 customer support</p>
-                    </div>
-                </div>
-                <div className={styles.featured__info__item}>
-                    <div className={styles.featured__info__icon}>
-                        <LiaShippingFastSolid size={40} />
-                    </div>
-                    <div className={styles.featured__info__content}>
-                        <h5>MONEY BACK GUARANTEE</h5>
-                        <p>We reurn money within 30 days</p>
-                    </div>
-                </div>
-            </div>
+            <Services/>
         </div>
     )
 }

@@ -1,0 +1,38 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/mixins" as *;
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 100px 0;
+  gap: 88px;
+  &__item {
+    // &__content {
+      
+    //   .titleSemiBold {
+    //   }
+    //   .titleRegular {
+    //   }
+    // }
+
+    @include tablet {
+      flex-direction: column;
+      text-align: center;
+      &__item {
+        margin-bottom: 40px;
+      }
+    }
+    &__icon {
+      background-color: black;
+      border-radius: 50%;
+      width: 58px;
+      text-align: center;
+      color: white;
+      border: 6px solid gray;
+      margin: 10px auto;
+    }
+  }
+}

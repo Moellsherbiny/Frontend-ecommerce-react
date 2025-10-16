@@ -1,20 +1,6 @@
 import { Breadcrumb } from "antd";
 import { Link } from "react-router";
 
-const homePathes = [
-    "my-account",
-    "cart",
-    "about",
-    "contact",
-    
-]
-
-const accountPathes = [
-    // "my-account",
-    "prod"
-    
-]
-
 
 function AppBreadcrumb() {
     const getCurrentPath = window.location.pathname.split("/")
