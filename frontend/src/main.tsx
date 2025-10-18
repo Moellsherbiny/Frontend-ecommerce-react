@@ -1,25 +1,28 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import {BrowserRouter} from 'react-router'
+import { BrowserRouter } from 'react-router'
+import { Provider } from 'react-redux'
+import { store } from '@/app/store.ts'
 import { ConfigProvider } from 'antd'
 import App from './App.tsx'
 import "./styles/main.scss"
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <Provider store={store}>
       <BrowserRouter>
-
-      <ConfigProvider
-        theme={{
-          token:{
-            colorPrimary: "#DB4444",
-            colorSuccess:"#00FF66",
-            borderRadius: 4,
-            fontFamily:"Poppins",
-          }
-        }}
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: "#DB4444",
+              colorSuccess: "#00FF66",
+              borderRadius: 4,
+              fontFamily: "Poppins",
+            }
+          }}
         >
-        <App />
+          <App />
         </ConfigProvider>
       </BrowserRouter>
+    </Provider>
   </StrictMode>,
 )
