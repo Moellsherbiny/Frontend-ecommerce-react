@@ -8,6 +8,7 @@ function OurProducts() {
   return (
     <div className={styles.ourProducts}>
         <SectionTitle title="Our Products" />
+        <h1 className={styles.headingSemiBold}>Explore Our Products</h1>
         <div className={styles.ourProducts__productsContainer} >
             {products.slice(0,8).map((product:ProductCardProps) =>
             <div key={product.id} className={styles.ourProducts__productsContainer__product}>

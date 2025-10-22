@@ -1,18 +1,17 @@
 import React from "react";
 import { Card } from "antd";
-import {
-  ShopOutlined,
-  ShoppingOutlined,
-  UserOutlined,
-  DollarCircleOutlined,
-  LinkedinOutlined,
-  InstagramOutlined,
-  TwitterOutlined,
-} from "@ant-design/icons";
+
 import { Row, Col } from "antd";
 import styles from "./About.module.scss";
 import Services from "@/Components/common/Services/Services";
 import IconContainer from "@/Components/common/IconContainer/IconContainer";
+import { RiInstagramLine, RiLinkedinLine, RiTwitterLine  } from "react-icons/ri";
+import { CiDollar } from "react-icons/ci";
+
+import MoneyBag from "@/assets/icons/MoneyBag"
+import Dollar from "@/assets/icons/Dollar.tsx"
+import {Shop} from "@/assets/icons/Shop"
+import ShoppingBag from "@/assets/icons/ShoppingBag"
 
 const { Meta } = Card;
 
@@ -46,22 +45,22 @@ const teamData: TeamMember[] = [
 
 const statsData = [
   {
-    icon: <DollarCircleOutlined />,
+    icon: <Shop/>,
     stat: "10.5k",
     title: "Sellers active our site"
   },
   {
-    icon: <ShopOutlined />,
+    icon: <Dollar/>,
     stat: "33k",
     title: "Monthly Product Sale"
   },
   {
-    icon: <UserOutlined />,
+    icon: <ShoppingBag/>,
     stat: "45.5k",
     title: "Customers active on our site"
   },
   {
-    icon: <ShoppingOutlined />,
+    icon: <MoneyBag/>,
     stat: "25k",
     title: "Annual gross sale in our site"
   }
@@ -98,18 +97,18 @@ const About: React.FC = () => {
         </div>
 
 
-        <Row className={styles.statsSection} justify="space-between">
+        <div className={styles.statsSection} >
           {statsData.map((stat) =>
-            <Col key={stat.title} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12, }} lg={{ span: 5 }}>
-              <Card className={styles.statsSection__card} variant="outlined">
+          
+              <Card key={stat.title} className={styles.statsSection__card} variant="outlined">
                 <IconContainer className={styles.icon} icon={stat.icon} />
 
                 <h3>{stat.stat}</h3>
-                <p>{stat.title}</p>
+                <p className={styles.titleRegular}>{stat.title}</p>
               </Card>
-            </Col>
+         
           )}
-        </Row>
+        </div>
 
         <div className={styles.teamSection}>
           <Row justify="space-between" gutter={[24, 24]}>
@@ -130,11 +129,13 @@ const About: React.FC = () => {
                   }
                 >
 
-                  <Meta title={member.name} description={member.role} />
+                  <Meta title={ <h3 className={styles.headingMedium}>{member.name}</h3>}
+                        description={<p className={styles.titleRegular}>{member.role}</p>} />
+                  
                   <div className={styles.socials}>
-                    <a href="#"><TwitterOutlined /></a>
-                    <a href="#"><InstagramOutlined /></a>
-                    <a href="#"><LinkedinOutlined /></a>
+                    <a href="#"><RiTwitterLine  size={24} /></a>
+                    <a href="#"><RiInstagramLine size={24}  /></a>
+                    <a href="#"><RiLinkedinLine size={24} /></a>
                   </div>
                 </Card>
               </Col>

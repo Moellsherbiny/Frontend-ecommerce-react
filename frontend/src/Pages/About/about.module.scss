@@ -1,10 +1,13 @@
 @use "@/styles/abstracts/variables" as *;
 @use "@/styles/abstracts/mixins" as *;
+
+
 .aboutContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 
 .storySection {
   position: relative;
@@ -18,10 +21,12 @@
   }
 }
 
+
 .text {
-  .headingSemiBold{
+  .headingSemiBold {
     margin-bottom: 30px;
   }
+
   p {
     font-size: 1rem;
     color: $color-dark;
@@ -29,105 +34,133 @@
     line-height: 1.7;
   }
 
-  @include desktop{
+  @include desktop {
     margin-top: 30px;
-    p{
-      margin: 1rem  auto;
+
+    p {
+      margin: 1rem auto;
       text-align: justify;
     }
   }
 }
 
+
 .imageWrapper {
   position: relative;
   right: -15%;
   top: 30px;
+
+  @include desktop {
+    right: 0;
+    margin: 0 auto;
+  }
 }
 
 .image {
   width: 100%;
 }
-@include desktop{
-  .imageWrapper{
-    right: 0;
-    margin: 0 auto;
-    
-  }
-}
+
+
+
 .statsSection {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(270px, 1fr));
+  justify-content: space-between;
+  gap: 15px;
+
+  @include desktop{
+    grid-template-columns: repeat(2, minmax(270px, 1fr));
+  }
+
+  @include tablet{
+    grid-template-columns: repeat(2, minmax(270px, 1fr));
+  }
   &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 1.5rem !important;
+    width: 270px;
+    height: 230px;  
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
-    
 
-    &:hover{
+    &:hover {
       background-color: $color-secondary-1;
       color: white;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       border: transparent;
-      .icon{
+
+      .icon {
         color: $color-dark;
         background-color: white;
         outline: 11px solid rgba(255, 255, 255, 0.3);
-
       }
     }
-    @include desktop{
-      margin: 30px ;
+
+    @include desktop {
+      margin: 30px;
+    }
   }
-
-}
 }
 
-.teamSection{
+
+.teamSection {
   margin-top: 40px;
-    display: flex;
+  display: flex;
   justify-content: center;
+
   &__card {
     width: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
     box-shadow: none;
-    
-    .image{
+
+    .titleRegular {
+      margin-top: 16px;
+      color: $color-dark;
+    }
+
+    .image {
       overflow: hidden;
       display: flex;
       justify-content: center;
-      align-items:baseline;
-      padding-top:30px;
+      align-items: baseline;
+      padding-top: 30px;
       height: 430px;
       width: 100%;
       background-color: $color-secondary;
-      img{
-        
+
+      img {
         width: 80%;
         margin: 0 auto;
       }
     }
 
-    .socials{
-      color: black;
+    .socials {
+      margin-top: 16px;
       font-size: 24px;
-      a{
+
+      a {
         color: black;
-        margin-right: 10px
+        margin-right: 10px;
       }
     }
 
-  }
-  @include desktop{
-    &__card{
+    @include desktop {
       margin: 30px auto;
     }
-  }
-  @include mobile{
-    &__card{
+
+    @include mobile {
       width: 300px;
-      .image img{
+
+      .image img {
         width: 100%;
       }
     }
   }
 }
-

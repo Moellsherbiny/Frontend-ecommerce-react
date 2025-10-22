@@ -1,102 +1,101 @@
 import React, { useState } from "react";
-import { Menu, Drawer, Button } from "antd";
+import { Link } from "react-router";
+import { Menu, Drawer, Button, Badge } from "antd";
 import {
   MenuOutlined,
   HeartOutlined,
   ShoppingCartOutlined,
-  // SearchOutlined,
 } from "@ant-design/icons";
-import styles from "../../styles/components/header.module.scss";
-import { Link } from "react-router";
 import { CiSearch } from "react-icons/ci";
+
+import UserMenu from "./UserMenu";
+import styles from "../../styles/components/header.module.scss";
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const [current, setCurrent] = useState("home");
 
-  const showDrawer = () => setOpen(true);
-  const onClose = () => setOpen(false);
-
+  // --- Navigation Links ---
   const navLinks = [
-    {
-      label: "Home",
-      key: "home",
-      to: "/"
+    { label: "Home", key: "home", to: "/" },
+    { label: "Contact", key: "contact", to: "/contact" },
+    { label: "About", key: "about", to: "/about" },
+    { label: "Sign Up", key: "signup", to: "/auth/signup" },
+  ];
 
-    },
-    {
-      label: "Contact",
-      key: "contact",
-      to: "/contact"
-    },
-    {
-      label: "About",
-      key: "about",
-      to: "/about"
-    },
-    {
-      label: "Sign Up",
-      key: "signup",
-      to: "/auth/signup"
-    }
-  ]
-  const [current, setCurrent] = useState("home")
-  const setItemClick = (key: string) => {
-    setCurrent(key)
+  // --- Handlers ---
+  const handleDrawerOpen = () => setOpen(true);
+  const handleDrawerClose = () => setOpen(false);
+  const handleNavClick = (key: string) => setCurrent(key);
 
-  }
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-
         <nav className={styles.navbar}>
-          {/* Logo */}
+          {/* === Logo === */}
           <div className={styles.logo}>Exclusive</div>
 
-          {/* Desktop Menu */}
-          <div className={styles.links}>
-            {/* <Menu  overflowedIndicator={null} onClick={setItemClick} selectedKeys={[current]} mode="horizontal" selectable={false} items={navLinks} /> */}
+          {/* === Desktop Links === */}
+          <div className={styles.navbar__links}>
             <ul>
               {navLinks.map((link) => (
-                <li key={link.key} onClick={() => setItemClick(link.key)}>
-                  <Link to={link.to} className={current === link.key ? styles.active : ""} >{link.label}  </Link>
+                <li key={link.key} onClick={() => handleNavClick(link.key)}>
+                  <Link
+                    to={link.to}
+                    className={current === link.key ? styles.active : ""}
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className={styles.shop}>
-
-            
-            <div className={styles.actions}>
-              <form className={styles.search}>
-
+          {/* === Right Section (Search + Icons + User) === */}
+          <div className={styles.navbar__shop}>
+            <div className={styles.navbar__actions}>
+              {/* --- Search --- */}
+              <form className={styles.navbar__actions__search}>
                 <input
-                  placeholder="What are you looking for?"
                   type="text"
-                  
-                  />
-                <button>
+                  placeholder="What are you looking for?"
+                  aria-label="Search products"
+                />
+                <button type="submit">
                   <CiSearch size={16} />
                 </button>
               </form>
 
-              <HeartOutlined className={styles.icon} />
-              <ShoppingCartOutlined className={styles.icon} />
+              {/* --- Icons --- */}
+              <div className={styles.navbar__actions__icons}>
+                <Badge count={3}>
+                  <HeartOutlined className={styles.icon} />
+                </Badge>
+                <Badge count={0}>
+                  <ShoppingCartOutlined className={styles.icon} />
+                </Badge>
+                <UserMenu />
+              </div>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* --- Mobile Menu Button --- */}
             <Button
               className={styles.menuBtn}
               type="text"
               icon={<MenuOutlined />}
-              onClick={showDrawer}
+              onClick={handleDrawerOpen}
             />
 
-            {/* Drawer for Mobile */}
-            <Drawer title="Menu" placement="right" onClose={onClose} open={open}>
+            {/* --- Drawer (Mobile Menu) --- */}
+            <Drawer
+              title="Menu"
+              placement="right"
+              onClose={handleDrawerClose}
+              open={open}
+            >
               <input
-                placeholder="What are you looking for?"
                 type="search"
+                placeholder="What are you looking for?"
                 className={styles.search}
               />
               <Menu mode="vertical" items={navLinks} />

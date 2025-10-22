@@ -19,7 +19,11 @@
 .thisMonth{
     &__products{
         display: grid;
-        grid-template-columns: 1fr ;       
+        grid-template-columns: 1fr ;   
+        
+        >div{
+            width: 100%;
+        }
     }
 }
 }

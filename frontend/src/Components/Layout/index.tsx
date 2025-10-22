@@ -2,8 +2,8 @@ import type { ReactNode } from "react"
 import TopHeader from "@/Components/Layout/TopHeader"
 import Navbar from "@/Components/Layout/Navbar"
 import Footer from "@/Components/Layout/Footer"
-// import styles from "@/Components/Layout/layout.module.scss"
-// import  Breadcrumb  from "@/Components/Layout/Breadcrumb"
+import styles from "@/Components/Layout/layout.module.scss"
+
 
 function AppLayout({children}:{children:ReactNode}) {
 
@@ -11,7 +11,7 @@ function AppLayout({children}:{children:ReactNode}) {
     <>
         <TopHeader/>
         <Navbar/>
-        <main >
+        <main className={styles.main}>
   
             {/* <Breadcrumb /> */}
             {children}

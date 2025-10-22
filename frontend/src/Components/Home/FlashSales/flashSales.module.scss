@@ -5,7 +5,9 @@
 
   &__header {
     display: flex;
-    gap: 60px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
     align-items: center;
     margin-bottom: 2rem;
 

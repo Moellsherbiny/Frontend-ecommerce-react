@@ -1,0 +1,34 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/mixins" as *;
+
+.horizontalSidebar{
+  width: 100%;
+  display: none;
+  justify-content: start;
+  @include desktop{
+    display: block;
+  }
+  
+  &__list{
+    overflow-x: scroll;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 20px;
+
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  
+    li{
+      display: block;
+      border-right: 1px solid red;
+      a{
+        width: 300px ;
+        text-wrap: nowrap;
+      }
+    }
+  }
+}

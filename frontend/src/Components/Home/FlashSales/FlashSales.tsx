@@ -5,7 +5,7 @@ import { useHorizontalScroll } from "../../../hooks/scrollHooks/useHorizontalScr
 import { ScrollButtonBackward, ScrollButtonForward, HorizontalScroll } from "../ScrollButtons/ScrollButtons"
 import SectionTitle from "../SectionTitle"
 function FlashSales() {
-    const {isAtEnd,isAtStart , scrollRef,scroll } = useHorizontalScroll()
+    const { isAtEnd, isAtStart, scrollRef, scroll } = useHorizontalScroll()
     return (
         <section className={styles.flashSales}>
             <SectionTitle title="Today's" />
@@ -37,8 +37,8 @@ function FlashSales() {
                 </div>
 
                 <HorizontalScroll>
-                    <ScrollButtonBackward disabled={isAtStart} onClick={()=> scroll("left")}/>
-                    <ScrollButtonForward disabled={isAtEnd} onClick={()=> scroll("right")}/>
+                    <ScrollButtonBackward disabled={isAtStart} onClick={() => scroll("left")} />
+                    <ScrollButtonForward disabled={isAtEnd} onClick={() => scroll("right")} />
                 </HorizontalScroll>
             </div>
 

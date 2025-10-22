@@ -1,22 +1,24 @@
 import styles from "@/Components/common/Services/services.module.scss"
-import { LiaShippingFastSolid } from 'react-icons/lia'
 import IconContainer from "../IconContainer/IconContainer"
+import Delivery from "@/assets/icons/Delivery"
+import HeadPhone from "@/assets/icons/HeadPhone"
+import Shield from "@/assets/icons/Shield"
 
 const servicesData = [
     {
         title:"FREE AND FAST DELIVERY",
         description:"Free delivery for all orders over $140",
-        icon:<LiaShippingFastSolid size={40} />
+        icon:<Delivery />
     },
     {
         title:"24/7 CUSTOMER SERVICE",
         description:"Friendly 24/7 customer support",
-        icon:<LiaShippingFastSolid size={40} />
+        icon:<HeadPhone />
     },
     {
         title:"MONEY BACK GUARANTEE",
         description:"We reurn money within 30 days",
-        icon:<LiaShippingFastSolid size={40} />
+        icon:<Shield />
     },
 
 ]

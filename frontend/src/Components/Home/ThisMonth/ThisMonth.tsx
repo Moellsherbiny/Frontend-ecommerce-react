@@ -8,7 +8,7 @@ function ThisMonth() {
   return (
     <div className={styles.thisMonth}>
       <SectionTitle title="This Month" /> 
-      <h1>Best Selling Product</h1>
+      <h1 className={styles.headingSemiBold}>Best Selling Product</h1>
 
       <div className={styles.thisMonth__products}>
         {productsOfMonth.map((product)=><ProductCard key={product.id} product={product}/>)}
