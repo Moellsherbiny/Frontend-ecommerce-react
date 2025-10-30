@@ -1,0 +1,11 @@
+.shopNowBtn{
+  display: flex;
+  gap: 8px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-color: rgba($color: white, $alpha: .6);
+  cursor: pointer;
+}

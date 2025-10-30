@@ -1,7 +1,7 @@
 import { categories } from "./data"
 import { Menu } from "antd"
 import styles  from "./sidebar.module.scss"
-import HorizontalSidebar from "../HorizontalSideBar"
+import HorizontalSidebar from "../CategoriesMenuMobile"
 function Sidebar() {
   return (
     <>

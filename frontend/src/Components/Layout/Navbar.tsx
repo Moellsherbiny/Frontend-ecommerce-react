@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
 import { Menu, Drawer, Button, Badge } from "antd";
-import {
-  MenuOutlined,
-  HeartOutlined,
-  ShoppingCartOutlined,
+import {MenuOutlined,
 } from "@ant-design/icons";
 import { CiSearch } from "react-icons/ci";
 
 import UserMenu from "./UserMenu";
 import styles from "../../styles/components/header.module.scss";
+import { useSelector } from "react-redux";
+import { type RootState } from "@/app/store";
+import Cart from "@/assets/icons/Cart";
+import WishlistIcon from "@/assets/icons/WishlistIcon";
+
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState("home");
-
-  // --- Navigation Links ---
+  const cartItems = useSelector((state: RootState) => state.cart.items)
+  const wishlistCount = useSelector((state: RootState) => state.wishlist.items.length);
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  
   const navLinks = [
     { label: "Home", key: "home", to: "/" },
     { label: "Contact", key: "contact", to: "/contact" },
@@ -23,7 +27,7 @@ const Navbar: React.FC = () => {
     { label: "Sign Up", key: "signup", to: "/auth/signup" },
   ];
 
-  // --- Handlers ---
+  
   const handleDrawerOpen = () => setOpen(true);
   const handleDrawerClose = () => setOpen(false);
   const handleNavClick = (key: string) => setCurrent(key);
@@ -32,10 +36,14 @@ const Navbar: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <nav className={styles.navbar}>
-          {/* === Logo === */}
-          <div className={styles.logo}>Exclusive</div>
+          
+          <div className={styles.logo}>
+          <Link to="/">
+            Exclusive
+          </Link>
+            </div>
 
-          {/* === Desktop Links === */}
+          
           <div className={styles.navbar__links}>
             <ul>
               {navLinks.map((link) => (
@@ -51,10 +59,10 @@ const Navbar: React.FC = () => {
             </ul>
           </div>
 
-          {/* === Right Section (Search + Icons + User) === */}
+          
           <div className={styles.navbar__shop}>
             <div className={styles.navbar__actions}>
-              {/* --- Search --- */}
+              
               <form className={styles.navbar__actions__search}>
                 <input
                   type="text"
@@ -66,27 +74,33 @@ const Navbar: React.FC = () => {
                 </button>
               </form>
 
-              {/* --- Icons --- */}
+              
               <div className={styles.navbar__actions__icons}>
-                <Badge count={3}>
-                  <HeartOutlined className={styles.icon} />
+                <Link to="/wishlist">
+                  <Badge count={wishlistCount} >
+                   <WishlistIcon/>
+                  </Badge>
+               
+                </Link>
+                <Link to="/cart">
+               
+                <Badge count={cartCount} >
+                  <Cart />
                 </Badge>
-                <Badge count={0}>
-                  <ShoppingCartOutlined className={styles.icon} />
-                </Badge>
+                </Link>
                 <UserMenu />
               </div>
             </div>
 
-            {/* --- Mobile Menu Button --- */}
+            
             <Button
               className={styles.menuBtn}
               type="text"
-              icon={<MenuOutlined />}
+              icon={<MenuOutlined  />}
               onClick={handleDrawerOpen}
             />
 
-            {/* --- Drawer (Mobile Menu) --- */}
+            
             <Drawer
               title="Menu"
               placement="right"

@@ -76,12 +76,11 @@
   gap: $gap;
 }
 
-// Typography Mixins
-@mixin font-size($size, $line-height: normal) {
+@mixin font($size: 1.4rem, $line-height: 2.1rem, $weight: 400) {
   font-size: $size;
   line-height: $line-height;
+  font-weight: $weight;
 }
-
 @mixin heading($size: $font-size-2xl, $weight: $font-weight-bold, $line-height: $line-height-tight) {
   font-size: $size;
   font-weight: $weight;

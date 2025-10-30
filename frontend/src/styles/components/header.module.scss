@@ -41,17 +41,17 @@
   &__shop {
     display: flex;
     align-items: center;
-    
   }
 
   &__actions {
     display: flex;
     align-items: center;
+    gap: 16px;
 
     &__search {
       position: relative;
       width: 220px;
-      padding: 8px 12px;
+     
       background-color: $color-secondary;
       border-radius: 4px;
       input {
@@ -78,7 +78,9 @@
 
     &__icons{
       display: flex;
+      font-size: 21px;
       align-items: center;
+      font-size: 30px !important;
       gap: 1rem;
     }
   }
@@ -100,7 +102,8 @@
 
 .menuBtn {
   display: none;
-
+  font-size: 21px;
+  margin-bottom: 6px;
   @include tablet {
     display: inline-flex;
   }

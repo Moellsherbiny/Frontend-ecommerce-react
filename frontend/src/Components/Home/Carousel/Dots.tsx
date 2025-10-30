@@ -1,4 +1,4 @@
-import DotStyle from './dots.module.scss'
+import DotStyle from '@/styles/components/Home/dots.module.scss'
 
 type DotsProps ={
     count:number,

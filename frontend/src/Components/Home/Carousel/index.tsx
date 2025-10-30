@@ -1,8 +1,9 @@
 
-import CarouselStyles from './Carousel.module.scss'
+import CarouselStyles from '@/styles/components/Home/Carousel.module.scss'
 import type { CarouselProps } from '../../../types/carousel'
 import Dots from './Dots'
 import { Button } from 'antd'
+import ShopNowBtn from '@/Components/common/ShopNowBtn/ShopNowBtn'
 // import Button from '../../common/Button'
 
 
@@ -23,13 +24,13 @@ function AppCarousel({ items }: CarouselProps) {
                                 {currentItem.description}
                             </div>
 
-                            <Button type='dashed' style={{ width:"30%"}}>ShopNow</Button>
+                            <ShopNowBtn showArrow/>
                         </div>
                         <div className={CarouselStyles.imageContainer}>
                             {currentItem.image && <img src={currentItem.image} alt={currentItem.brand.name} />}
                         </div>
                     </div>
-            <Dots count={items.length +3} activeIndex={1} />
+            <Dots count={items.length +3} activeIndex={2} />
         </div>
     )
 }

@@ -1,13 +1,13 @@
-import inputStyles from "./input.module.scss"
+import React from "react";
+import inputStyles from "./input.module.scss";
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement>
+type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ ...props }, ref) => {
+    return <input ref={ref} {...props} className={inputStyles.input} />;
+  }
+);
 
 
-
-function Input({...props}:InputProps) {
-  return (
-    <input {...props} className={inputStyles.input}  />
-  )
-}
-
-export default Input
+export default Input;

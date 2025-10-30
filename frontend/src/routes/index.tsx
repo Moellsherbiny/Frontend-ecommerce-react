@@ -1,10 +1,15 @@
 import { Routes, Route } from "react-router";
-import Home from "../Pages/Home/Home";
-import Contact from "../Pages/Contact/contact";
-import About from "../Pages/About/about";
+import Home from "../Pages/Home";
+import Contact from "../Pages/Contact";
+import About from "../Pages/About";
 import Signup from "../Pages/auth/signup";
 import Signin from "../Pages/auth/signin";
-import NotFound from "../Pages/NotFound/notFound";
+import NotFound from "../Pages/NotFound";
+import CategoryPage from "@/Pages/Category";
+import CartPage from "@/Pages/Cart";
+import Wishlist from "@/Pages/WhishList";
+import CheckOut from "@/Pages/Checkout";
+import ProductDetails from "@/Pages/productDetails";
 
 function AppRoutes() {
   return (
@@ -12,6 +17,12 @@ function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/about" element={<About />} />
+      <Route path="/products" element={<CategoryPage />} />
+      <Route path="/products/:id" element={<ProductDetails />} />
+      <Route path="/products/:category" element={<Signup />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/wishlist" element={<Wishlist />} />
+      <Route path="/checkout" element={<CheckOut />} />
       <Route path="/auth/signup" element={<Signup />} />
       <Route path="/auth/signin" element={<Signin />} />
       <Route path="*" element={<NotFound />} />

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react"
-import authStyles from "./auth.module.scss"
-import AuthImage from "../../assets/images/login-register.jpg"
+import authStyles from "@/styles/components/auth.module.scss"
+import AuthImage from "@/assets/images/login-register.jpg"
 
 function Layout({ children }: { children: ReactNode }) {
   return (

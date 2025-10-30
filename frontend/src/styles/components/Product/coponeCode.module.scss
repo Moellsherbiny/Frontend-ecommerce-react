@@ -1,0 +1,36 @@
+@use "@/styles/abstracts/mixins" as *;
+
+
+
+.coponeCode{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 8px;
+
+  @include mobile{
+    flex-direction: column;
+  }
+
+  &__input,
+  &__btn {
+    @include mobile{
+      width: 100% !important;
+    }
+    height: 50px;
+  }
+
+  &__input {
+    flex: 1;
+    font-size: 14px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 30px !important;
+  }
+
+  &__btn {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 24px;
+  }
+}

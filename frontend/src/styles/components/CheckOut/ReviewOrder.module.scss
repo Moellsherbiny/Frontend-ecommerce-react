@@ -1,0 +1,60 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/mixins" as *;
+
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  padding-bottom: 0.8rem;
+  .productInfo{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+
+.summaryTotals {
+  font-size: 16px;
+  margin: 20px 0;
+  .summaryItem{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    // margin-bottom: 20px;
+    &:not(:last-child){
+      border-bottom: 1px solid black;
+    }
+  }
+}
+
+.paymentSection {
+  margin-bottom: 40px;
+}
+
+.paymentOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__item{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    &__icons{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+

@@ -1,0 +1,22 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/mixins" as *;
+
+
+.breadcrumbWrapper {
+  padding: 4rem 0;
+  font-size: 16px;
+  @include tablet{
+    padding: 2rem 0;
+  }
+
+  :global(.ant-breadcrumb) {
+    ol {
+      li:last-child {
+        a {
+          color: black;
+        }
+      }
+    }
+  }
+}
+

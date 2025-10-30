@@ -1,0 +1,111 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/mixins" as *;
+.cartPage {
+  padding: 40px 0;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .cartTable {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    text-wrap: nowrap;
+
+    :global(.ant-table-container table) {
+      border-collapse: separate !important;
+      border-spacing: 0 40px !important;
+    }
+
+    :global(.ant-table-tbody > tr) {
+      box-shadow: 0 1px 13px rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    :global(.ant-table-tbody > tr:hover) {
+      transform: scale(1.01);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .productInfo {
+      &:hover .removeBtn {
+        display: flex;
+      }
+    }
+  }
+
+  .btnContainer {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 40px;
+  @include mobile{
+    flex-direction: column;
+    .btn{
+      width: 100% !important;
+    }
+  }
+  .btn {
+    padding: 30px 80px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+  }
+
+
+  .productImage {
+    position: relative;
+  }
+  .removeBtn {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 7px;
+    background-color: $color-secondary-1;
+    border-radius: 50%;
+    color: white;
+    font-size: 8px;
+    font-weight: 600;
+    width: 18px;
+    height: 18px;
+  }
+
+  .cartTotal {
+    border: 1.5px solid black;
+  }
+}
+
+.customInput {
+  width: 72px;
+  border: 1.5px solid rgba($color: #000000, $alpha: 0.4) !important;
+  padding: 7px;
+  font-size: 16px;
+
+  svg {
+    color: black;
+  }
+
+  span {
+    border: none;
+  }
+  :global(.ant-input-number-handler-wrap) {
+    width: 40% !important;
+    opacity: 1 !important;
+    :global(.ant-input-number-handler) {
+      border-inline-start: none !important;
+      border: none;
+      height: 50%;
+      span {
+        svg {
+          width: 10px;
+          height: 15px;
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,6 @@
 @use "../../../styles/abstracts/mixins" as *;
 
 .flashSales {
-
   &__header {
     display: flex;
     flex-wrap: wrap;
@@ -10,43 +9,42 @@
     gap: 20px;
     align-items: center;
     margin-bottom: 2rem;
-
- 
   }
 
   &__title {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 18px;
 
-    h2 {
-      font-size: 1.8rem;
-      font-weight: 600;
-    }
-  }
-  &__timer {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-
-    div {
-      text-align: center;
-
-      h3 {
+    &__timer {
+      display: flex;
+      flex-wrap: nowrap !important;
+      align-items: center;
+      gap: 15px;
+      margin-left: 60px;
+      @include mobile {
+        margin-left: 0px;
+      }
+      div {
+        text-align: center;
+        
+        h3 {
+          font-size: 1.5rem;
+          font-weight: 700;
+        }
+        
+        span {
+          font-size: 0.8rem;
+          color: #666;
+        }
+      }
+      
+      span {
         font-size: 1.5rem;
         font-weight: 700;
+        color: #db4444;
       }
-
-      span {
-        font-size: 0.8rem;
-        color: #666;
-      }
-    }
-
-    span {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #db4444;
     }
   }
 

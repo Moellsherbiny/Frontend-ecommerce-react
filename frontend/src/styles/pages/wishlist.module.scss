@@ -1,0 +1,42 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/mixins" as *;
+
+.wishlistPage {
+  padding: 40px 0;
+  min-height: 100vh;
+
+  .titleRegular {
+    margin-bottom: 32px;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .empty {
+    margin-top: 80px;
+  }
+
+@include desktop{
+   .wishlistGrid {
+     >div{
+      >div{
+        width: 100%;
+      }
+        }
+  }
+}
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    button {
+      flex: 1;
+      font-weight: 500;
+
+      &:first-child {
+        margin-right: 8px;
+      }
+    }
+  }
+}

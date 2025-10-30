@@ -1,13 +1,5 @@
 import React from "react";
 
-/*
- width="1em" // ✅ عشان تتصرف زي react-icons (بتتبع حجم الخط)
-    height="1em"
-    viewBox="0 0 40 40"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-*/
 
 const ShoppingBag: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg width="2em" height="2em" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>

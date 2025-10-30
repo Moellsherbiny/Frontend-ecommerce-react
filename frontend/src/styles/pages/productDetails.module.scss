@@ -1,0 +1,158 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/mixins" as *;
+
+.productDetails {
+  padding: 40px 20px;
+
+  .imageSection {
+    display: flex;
+    gap: 16px;
+
+    .thumbnails {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .thumb {
+        background-color: $color-secondary;
+        width: 170px;
+        height: 138px;
+        border-radius: 8px;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: border 0.3s;
+
+        @include tablet {
+          width: 70px;
+          height: 70px;
+        }
+      }
+    }
+
+    .mainImage {
+      display: flex;
+      background-color: $color-secondary;
+      align-items: center;
+      flex: 1;
+      img {
+        width: 100%;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0;
+    .reviews {
+      color: #777;
+    }
+  }
+
+  .price {
+    color: #000;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .description {
+    color: #555;
+    margin-top: 16px;
+  }
+
+  .optionGroup {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .colors {
+      display: flex;
+      gap: 10px;
+
+      .colorCircle {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: border 0.3s;
+      }
+
+      .active {
+        border-color: #000;
+      }
+    }
+
+    .sizes {
+      display: flex;
+      gap: 8px;
+
+      .sizeBtn {
+        border: 1px solid #ccc;
+      }
+
+      .activeSize {
+        background-color: $color-secondary-1;
+        color: #fff;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+
+    .qty {
+      display: flex;
+      align-items: stretch;
+
+      input {
+        flex: 1;
+        padding: 5px !important;
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+      }
+
+      button {
+        padding: 20px;
+        font-size: 20px;
+        font-weight: 500;
+        &:first-child {
+          border-radius: 4px 0 0 4px;
+        }
+        &:last-child {
+          border-radius: 0px 4px 4px 0px;
+        }
+        &:hover {
+          color: white;
+          background-color: $color-secondary-1;
+        }
+      }
+    }
+  }
+
+  .delivery {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba($color: #000000, $alpha: 0.5);
+    border-radius: 4px;
+    gap: 16px;
+    > div:first-child {
+      border-bottom: 1px solid rgba($color: #000000, $alpha: 0.5);
+      padding-bottom: 16px;
+    }
+    > div {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+}

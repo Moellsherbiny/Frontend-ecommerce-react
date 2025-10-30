@@ -1,22 +1,27 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react"
 import styles from "./scrollButtons.module.scss"
-import { FaArrowRight } from "react-icons/fa6"
-import { FaArrowLeft } from "react-icons/fa"
+import { IoArrowForward, IoArrowBack } from "react-icons/io5";
 
-export function ScrollButtonForward({...props}:ButtonHTMLAttributes<HTMLButtonElement>) {
+type ScrollButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  isAtEnd?: boolean
+  isAtStart?: boolean
+};
+
+
+export function ScrollButtonForward({isAtEnd, ...props}:ScrollButtonProps) {
   return (
-      <button {...props} className={styles.scrollButton}>
-        <FaArrowRight size={24} />
+      <button {...props} className={`${styles.scrollButton} ${isAtEnd ? "": styles.active}`}>
+        <IoArrowForward size={24} />
       </button>
     
   )
 }
 
 
-export function ScrollButtonBackward({...props}:ButtonHTMLAttributes<HTMLButtonElement>) {
+export function ScrollButtonBackward({isAtStart, ...props}:ScrollButtonProps) {
     return (
-      <button {...props} className={styles.scrollButton}> 
-        <FaArrowLeft size={24} />
+      <button {...props} className={`${styles.scrollButton} ${isAtStart ? "" : styles.active}`}>
+        <IoArrowBack size={24} />
       </button>
 
   )}
