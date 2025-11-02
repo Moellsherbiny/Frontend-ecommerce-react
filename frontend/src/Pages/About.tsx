@@ -13,6 +13,7 @@ import Dollar from "@/assets/icons/Dollar.tsx"
 import {Shop} from "@/assets/icons/Shop"
 import ShoppingBag from "@/assets/icons/ShoppingBag"
 import Breadcrumbs from "@/Components/common/BreadCrumb";
+import SEO from "@/Components/SEO";
 
 const { Meta } = Card;
 
@@ -66,8 +67,14 @@ const statsData = [
     title: "Annual gross sale in our site"
   }
 ]
-const About: React.FC = () => {
+function About() {
   return (
+    <>
+     <SEO
+        title="About Us | Exclusive"
+        description="Learn more about Exclusive — our story, our mission, and what makes us your trusted destination for premium products."
+        url="/about"
+      />
     <div className={styles.container}>
       <Breadcrumbs chain={[{ title: "Home", path: "/"}, { title: "About Us" }]} />
       <div className={styles.aboutContainer}>
@@ -149,6 +156,7 @@ const About: React.FC = () => {
       <Services />
     </div>
 
+    </>
   );
 };
 

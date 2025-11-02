@@ -7,6 +7,7 @@ import { removeFromCart, saveCartToLocalStorage, updateQuantity } from "@/featur
 import styles from "@/styles/components/Product/cartPage.module.scss";
 import { Link } from "react-router";
 import CouponCode from "@/Components/Products/CoponCode"
+import SEO from "@/Components/SEO";
 const { Title, Text } = Typography;
 
 type CartItem = {
@@ -74,7 +75,7 @@ const CartPage: React.FC = () => {
         <InputNumber
           min={1}
           value={record.quantity}
-          formatter={(value)=>( value && value < 10 ? `0${value}` : `${value}`)}
+          formatter={(value) => (value && value < 10 ? `0${value}` : `${value}`)}
           parser={(value) => parseInt(value ?? "0", 10)}
           className={styles.customInput}
           onChange={(val) => handleQuantityChange(record.id, val)}
@@ -88,60 +89,68 @@ const CartPage: React.FC = () => {
   ];
 
   return (
-    <div className={styles.cartPage}>
-      <div className="container">
-        <Title level={3}>Shopping Cart</Title>
+    <>
+      <SEO
+        title="Shopping Cart | Exclusive"
+        description="View and manage the items in your Exclusive shopping cart before checkout."
+        url="/cart"
+      />
+      <div className={styles.cartPage}>
+        <div className="container">
+          <Title level={3}>Shopping Cart</Title>
 
-        <Table
-          columns={columns}
-          dataSource={cart}
-          rowKey="id"
-          pagination={false}
-          className={styles.cartTable}
-        />
-        <Space className={styles.btnContainer} >
-          <Link to="/products">
-            <Button className={styles.btn}>Return To Shop</Button>
-          </Link>
-          <Button onClick={()=>{saveCartToLocalStorage(cart)}} className={styles.btn} >Update Cart</Button>
+          <Table
+            columns={columns}
+            dataSource={cart}
+            rowKey="id"
+            pagination={false}
+            className={styles.cartTable}
+          />
+          <Space className={styles.btnContainer} >
+            <Link to="/products">
+              <Button className={styles.btn}>Return To Shop</Button>
+            </Link>
+            <Button onClick={() => { saveCartToLocalStorage(cart) }} className={styles.btn} >Update Cart</Button>
 
-        </Space>
-        <Row gutter={[32, 32]} justify="space-between">
-          <Col xs={24} md={10}>
-            <CouponCode />
-          </Col>
+          </Space>
+          <Row gutter={[32, 32]} justify="space-between">
+            <Col xs={24} md={10}>
+              <CouponCode />
+            </Col>
 
-          <Col xs={24} md={10}>
-            
-          
-            <Card className={styles.cartTotal}>
-              <Title level={5}>Cart Total</Title>
-              <Divider />
-              <Space direction="vertical" style={{ width: "100%" }}>
-                <Row justify="space-between">
-                  <Text>Subtotal:</Text>
-                  <Text strong>${subtotal}</Text>
-                </Row>
-                <Row justify="space-between">
-                  <Text>Shipping:</Text>
-                  <Text>Free</Text>
-                </Row>
+            <Col xs={24} md={10}>
+
+
+              <Card className={styles.cartTotal}>
+                <Title level={5}>Cart Total</Title>
                 <Divider />
-                <Row justify="space-between">
-                  <Text strong>Total:</Text>
-                  <Text strong>${subtotal}</Text>
-                </Row>
-                <Link to="/checkout">
-                <Button type="primary" style={{display:"flex", margin:"0 auto", padding:"28px", width:"80%"}} >
-                  Proceed to Checkout
-                </Button>
-                </Link>
-              </Space>
-            </Card>
-          </Col>
-        </Row>
+                <Space direction="vertical" style={{ width: "100%" }}>
+                  <Row justify="space-between">
+                    <Text>Subtotal:</Text>
+                    <Text strong>${subtotal}</Text>
+                  </Row>
+                  <Row justify="space-between">
+                    <Text>Shipping:</Text>
+                    <Text>Free</Text>
+                  </Row>
+                  <Divider />
+                  <Row justify="space-between">
+                    <Text strong>Total:</Text>
+                    <Text strong>${subtotal}</Text>
+                  </Row>
+                  <Link to="/checkout">
+                    <Button type="primary" style={{ display: "flex", margin: "0 auto", padding: "28px", width: "80%" }} >
+                      Proceed to Checkout
+                    </Button>
+                  </Link>
+                </Space>
+              </Card>
+            </Col>
+          </Row>
+        </div>
       </div>
-    </div>
+    </>
+
   );
 };
 

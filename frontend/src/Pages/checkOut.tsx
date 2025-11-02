@@ -8,6 +8,7 @@ import PaymentForm from "@/Components/Checkout/PaymentForm";
 import ReviewOrder from "@/Components/Checkout/ReviewOrder";
 import styles from "@/styles/components/Checkout/Checkout.module.scss";
 import Breadcrumb from "@/Components/common/BreadCrumb";
+import SEO from "@/Components/SEO";
 
 const Checkout: React.FC = () => {
   const [current, setCurrent] = useState(0);
@@ -47,54 +48,61 @@ const Checkout: React.FC = () => {
   };
 
   const breadItems = [
-    {title:"Account"},
-    {title:"My Account"},
-    {title:"Product"},
-    {title:"View Cart"},
-    {title:"CheckOut", path:"/checkout"},
+    { title: "Account" },
+    { title: "My Account" },
+    { title: "Product" },
+    { title: "View Cart" },
+    { title: "CheckOut", path: "/checkout" },
   ]
   return (
-    <div className={styles.checkout}>
-      <div className="container">
-      <Breadcrumb chain={breadItems}/>
-        <div className={styles.checkoutCard}>
-          <Row gutter={[24, 24]} justify="space-between">
+    <>
+      <SEO
+        title="Checkout | Exclusive"
+        description="Complete your purchase securely on Exclusive. Fast, safe, and simple checkout process."
+        url="/checkout"
+      />
+      <div className={styles.checkout}>
+        <div className="container">
+          <Breadcrumb chain={breadItems} />
+          <div className={styles.checkoutCard}>
+            <Row gutter={[24, 24]} justify="space-between">
 
-            <Col xs={24} md={12} style={{padding:5}}>
-              <Steps current={current} items={stepTitles} />
-              <div className={styles.stepContent}>{stepComponents[current]}</div>
-              <div className={styles.buttonGroup}>
-                {current > 0 && (
-                  <Button onClick={prev} className={styles.prevBtn}>
-                    Previous
-                  </Button>
-                )}
-                {current < stepComponents.length - 1 && (
-                  <Button type="primary" onClick={next}>
-                    Next
-                  </Button>
-                )}
-                {current === stepComponents.length - 1 && (
-                  <Button type="primary" onClick={handleConfirmOrder}>
-                    Confirm Order
-                  </Button>
-                )}
-              </div>
-            </Col>
+              <Col xs={24} md={12} style={{ padding: 5 }}>
+                <Steps current={current} items={stepTitles} />
+                <div className={styles.stepContent}>{stepComponents[current]}</div>
+                <div className={styles.buttonGroup}>
+                  {current > 0 && (
+                    <Button onClick={prev} className={styles.prevBtn}>
+                      Previous
+                    </Button>
+                  )}
+                  {current < stepComponents.length - 1 && (
+                    <Button type="primary" onClick={next}>
+                      Next
+                    </Button>
+                  )}
+                  {current === stepComponents.length - 1 && (
+                    <Button type="primary" onClick={handleConfirmOrder}>
+                      Confirm Order
+                    </Button>
+                  )}
+                </div>
+              </Col>
 
 
-            <Col xs={24} md={10}>
-              <ReviewOrder
-                cart={cart}
-                shippingData={shippingData}
-                paymentData={paymentData}
-                onPaymentChange={setPaymentMethod}
-              />
-            </Col>
-          </Row>
+              <Col xs={24} md={10}>
+                <ReviewOrder
+                  cart={cart}
+                  shippingData={shippingData}
+                  paymentData={paymentData}
+                  onPaymentChange={setPaymentMethod}
+                />
+              </Col>
+            </Row>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

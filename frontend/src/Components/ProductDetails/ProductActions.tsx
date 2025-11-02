@@ -21,7 +21,7 @@ interface Props {
   setQuantity: (qty: number) => void;
 }
 
-function ProductActions({id, name, price, thumbnail, setQuantity }: Props){
+function ProductActions({id, name, price, thumbnail }: Props){
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const cart = useSelector((state: RootState) => state.cart.items);

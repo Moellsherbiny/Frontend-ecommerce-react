@@ -4,6 +4,8 @@ import { getProductById } from "@/data/products";
 import type { Product } from "@/types/product/product";
 import ProductDetails from "@/Components/ProductDetails";
 import ProductDetailsSkeleton from "@/Components/ProductDetails/ProductDetailsSkeleton";
+import { Helmet } from "react-helmet-async";
+import SEO from "@/Components/SEO";
 
 
 const ProductDetailsPage: React.FC = () => {
@@ -19,10 +21,18 @@ const ProductDetailsPage: React.FC = () => {
   if (!product) {
     return <ProductDetailsSkeleton/>;
   }
-  console.log(product.images);
+  
  
   return (
-  <ProductDetails product={product} />
+    <>
+     <SEO
+       title={`${product.name} | Exclusive`}
+        description={product.description}
+        image={product.thumbnail}
+        url={`/productS/${product.id}`}
+     />
+      <ProductDetails product={product} />
+    </>
   );
 };
 

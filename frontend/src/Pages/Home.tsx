@@ -10,6 +10,7 @@ import Categories from "@/Components/Home/Categories";
 import MainBanner from "@/Components/Home/MainBanner";
 import OurProducts from "@/Components/Home/OurProducts";
 import { Divider } from "antd";
+import SEO from "@/Components/SEO";
 
 
 const carouselItems: CarouselItem[] =[
@@ -62,11 +63,15 @@ const carouselItems: CarouselItem[] =[
 ]
 
 function HomePage() {
-
-
+  
+  
   return (
+    <>
+    <SEO
+      title="Exclusive | Home"
+      description="Welcome to Exclusive – explore our latest collections and premium offers."
+    />
     <div className="container">
-
     <div className={styles.home}>
       <div className={styles.main}>
         <Sidebar/>
@@ -82,6 +87,7 @@ function HomePage() {
       <Featured/>
     </div>
     </div>
+    </>
   )
 }
 

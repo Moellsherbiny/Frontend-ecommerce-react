@@ -7,6 +7,7 @@ import { allCategories } from "@/data/categories";
 import { useSearchParams } from "react-router";
 import type { ProductCardProps } from "@/types/product/productCard";
 import SectionTitle from "@/Components/Home/SectionTitle";
+import SEO from "@/Components/SEO";
 
 const { Title } = Typography;
 
@@ -48,6 +49,12 @@ const CategoryPage = () => {
   }, [selectedCategory, sortBy]);
 
   return (
+    <>
+      <SEO
+        title="All Products | Exclusive"
+        description="Browse all the latest collections and premium products on Exclusive. Find deals, top categories, and trending items."
+        url="https://exclusive-store.com/products"
+      />
     <section className={styles.categoryPage}>
       <div className="container">
 
@@ -90,6 +97,7 @@ const CategoryPage = () => {
       </div>
 
     </section>
+    </>
   );
 };
 
