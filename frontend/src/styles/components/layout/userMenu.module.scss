@@ -2,23 +2,41 @@
 @use "@/styles/abstracts/mixins" as *;
 
 .userMenu {
-  &__dropdown {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    display: none;
-    flex-direction: column;
-    gap: 16px;
-    padding: 16px;
-    background-color: rgba($color: #000000, $alpha: 0.04);
-    backdrop-filter: blur(75px);
-    border-radius: 4px;
-    color: black;
-    
-    overflow: hidden;
-    z-index: 22222;
-    transition: 0.2s ease;
+  &__button{
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    padding: 0;
   }
+&__dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+
+  // زجاجية رمادية شفافة بتبان على أي خلفية
+  background: linear-gradient(
+    135deg,
+    rgba(20, 20, 20, 0.5),
+    rgba(30, 30, 30, 0.3)
+  );
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+
+  color: #fff; // تفضل الكتابة بيضاء بس دلوقتي باينة على الخلفيات الفاتحة والغامقة
+  overflow: hidden;
+  z-index: 22222;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+
 
   &__dropdownItem {
     a {

@@ -1,85 +1,125 @@
 import { Link } from "react-router";
 import AuthLayout from "./AuthLayout";
 import authStyles from "@/styles/components/auth.module.scss";
-import { Button } from "antd";
-import Input from "../common/Input";
+import { Button, Form, Input, message } from "antd";
+
 import type { AppDispatch, RootState } from "@/app/store";
 import { loginUser } from "@/features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
+
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "@/validations/authSchema";
 import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 
 type LoginForm = yup.InferType<typeof loginSchema>;
 
 function SignIn() {
   const dispatch = useDispatch<AppDispatch>();
   const { loading, error } = useSelector((state: RootState) => state.auth);
-
+  const [messageApi, contextHolder] = message.useMessage();
   const {
-    register,
     handleSubmit,
-    formState: { errors, isValid },
-  
+    control,
+    formState: { errors },
   } = useForm<LoginForm>({
     resolver: yupResolver(loginSchema),
-    mode: "onChange", // ✅ Validation while typing
+    mode: "onChange",
   });
 
-  const onSubmit = (data: LoginForm) => {
-    dispatch(loginUser({ email: data.identifier, password: data.password }));
+  const onSubmit = async (data: LoginForm) => {
+    try {
+      await dispatch(
+        loginUser({ identifier: data.identifier, password: data.password })
+      );
+      messageApi.open({
+        type: "success",
+        content: "Logged in successfully!",
+      });
+    } catch (err: any) {
+      messageApi.open({
+        type: "error",
+        content: err?.message || "Login failed",
+      });
+    }
   };
 
   return (
     <AuthLayout>
-      <form onSubmit={handleSubmit(onSubmit)} className={authStyles.form}>
+      {contextHolder}
+      <div className={authStyles.formContainer}>
         <div className={authStyles.heading}>
           <h3 className={authStyles.headingMedium}>Log in to Exclusive</h3>
           <p className={authStyles.titleRegular}>Enter your details below</p>
         </div>
 
-      
-        <Input
-          type="text"
-          placeholder="Email or Phone Number"
-          {...register("identifier")}
-        />
-        {errors.identifier && (
-          <p className={authStyles.errorText}>{errors.identifier.message}</p>
-        )}
-
         
-        <Input
-          type="password"
-          placeholder="Password"
-          {...register("password")}
-        />
-        {errors.password && (
-          <p className={authStyles.errorText}>{errors.password.message}</p>
-        )}
+        <Form
+          layout="vertical"
+          onFinish={handleSubmit(onSubmit)}
+          className={authStyles.form}
+          variant="underlined"
+        >
+          
+          <Form.Item
+            validateStatus={errors.identifier ? "error" : ""}
+            help={errors.identifier?.message}
+          >
+            <Controller
+              name="identifier"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  placeholder="Enter your email or phone number"
+                  className={authStyles.inputField}
+                />
+              )}
+            />
+          </Form.Item>
 
-        <div className={authStyles.actions}>
-          <div className={authStyles.LoginButtons}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              disabled={loading}
-            >
-              {loading ? "Logging in..." : "Log In"}
-            </Button>
+          
+          <Form.Item
+            validateStatus={errors.password ? "error" : ""}
+            help={errors.password?.message}
+          >
+            <Controller
+              name="password"
+              control={control}
+              render={({ field }) => (
+                <Input.Password
+                  {...field}
+                  placeholder="Enter your password"
+                  className={authStyles.inputField}
+                />
+              )}
+            />
+          </Form.Item>
 
-            <Link to="/auth/forgot-password">Forget Password?</Link>
+          {/* Buttons */}
+          <div className={authStyles.actions}>
+            <div className={authStyles.LoginButtons}>
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+               
+                block
+              >
+                Log In
+              </Button>
+              <Link to="/auth/forgot-password">Forget Password?</Link>
+            </div>
           </div>
-        </div>
 
-        {/* ✅ Server Error */}
-        {error && (
-          <p className={authStyles.errorText} style={{ marginTop: "10px" }}>
-            {error}
-          </p>
-        )}
-      </form>
+          {/* Server Error */}
+          {error && (
+            <p className={authStyles.errorText} style={{ marginTop: "10px" }}>
+              {error}
+            </p>
+          )}
+        </Form>
+      </div>
     </AuthLayout>
   );
 }

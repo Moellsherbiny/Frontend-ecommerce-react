@@ -1,5 +1,4 @@
 import { Breadcrumb } from "antd";
-import { Link } from "react-router";
 import styles from "@/styles/components/common/breadcrumbs.module.scss";
 
 type Chain = {

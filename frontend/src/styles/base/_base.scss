@@ -6,37 +6,7 @@
   width: 100%;
   max-width: $container-max-width; 
   margin: 0 auto;
-  padding: 0 $container-padding;
   
-  // Responsive container padding
-  @include mobile {
-    padding-left: $spacing-md;   
-    padding-right: $spacing-md;
-  }
   
-  @include tablet {
-    padding-left: $spacing-lg;   // 24px
-    padding-right: $spacing-lg;
-  }
-  
-  @include desktop {
-    padding-left: $spacing-xl;   // 32px
-    padding-right: $spacing-xl;
-  }
 }
 
-// Fluid container (full width)
-.container-fluid {
-  width: 100%;
-  padding-left: $container-padding;
-  padding-right: $container-padding;
-}
-
-// Small container for narrow content
-.container-sm {
-  width: 100%;
-  max-width: 768px;
-  margin: 0 auto;
-  padding-left: $container-padding;
-  padding-right: $container-padding;
-}

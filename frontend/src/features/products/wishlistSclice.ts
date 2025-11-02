@@ -19,14 +19,14 @@ interface WishlistItem {
     freeDelivery: boolean;
     returnPolicy: string;
   };
-  image: string;
+  thumbnail: string;
 }
 
 interface WishlistState {
   items: WishlistItem[];
 }
 
-// ✅ قراءة wishlist من localStorage
+
 const loadWishlistFromLocalStorage = (): WishlistItem[] => {
   try {
     const stored = localStorage.getItem("wishlist");
@@ -37,7 +37,7 @@ const loadWishlistFromLocalStorage = (): WishlistItem[] => {
   }
 };
 
-// ✅ حفظ wishlist في localStorage
+
 const saveWishlistToLocalStorage = (items: WishlistItem[]) => {
   try {
     localStorage.setItem("wishlist", JSON.stringify(items));

@@ -1,0 +1,41 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/mixins" as *;
+
+
+
+.sidebar {
+  background: transparent;
+
+  .ant-menu-item-group-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #000;
+    margin-top: 1rem;
+  }
+
+  .ant-menu-item {
+    color: #777;
+    &.ant-menu-item-selected a {
+      color: #d23f3f;
+      font-weight: 500;
+    }
+  }
+}
+
+.formCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formTitle {
+  color: #d23f3f;
+  margin-bottom: 1rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}

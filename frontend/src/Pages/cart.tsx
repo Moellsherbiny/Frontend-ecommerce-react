@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Table, Button, InputNumber, Card, Row, Col, Typography, Space, Divider } from "antd";
+import { Table, Button, InputNumber, Card, Row, Col, Typography, Space, Divider, Image } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { type RootState } from "@/app/store";
@@ -13,7 +13,7 @@ type CartItem = {
   id: number;
   name: string;
   price: number;
-  image: string;
+  thumbnail: string;
   quantity: number;
 };
 
@@ -50,8 +50,8 @@ const CartPage: React.FC = () => {
               icon={<CloseOutlined />}
               onClick={() => handleRemove(record.id)}
             />
-            <img
-              src={record.image}
+            <Image
+              src={record.thumbnail}
               alt={record.name}
               width={60}
               height={60}

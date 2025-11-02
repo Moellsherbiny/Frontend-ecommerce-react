@@ -44,12 +44,17 @@
                 }
                 &:hover{
                     color: white;
+
+                    
                     svg{
                         color: white;
                     }
                 }
                 &:hover &__bg{
                     bottom: 0;
+                }
+                &:hover &__link{
+                    color: white;
                 }
     }
     }

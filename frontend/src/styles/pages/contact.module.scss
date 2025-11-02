@@ -5,8 +5,8 @@
 .contactContainer {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 1.5rem;
-  margin: 2rem 0;
+  gap: 1.5em;
+  margin-bottom: 2em ;
 
   @include tablet {
     grid-template-columns: 1fr;

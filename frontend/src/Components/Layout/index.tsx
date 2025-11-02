@@ -3,6 +3,7 @@ import TopHeader from "@/Components/Layout/TopHeader"
 import Navbar from "@/Components/Layout/Navbar"
 import Footer from "@/Components/Layout/Footer"
 import styles from "@/styles/components/Layout/layout.module.scss"
+import BackToTop from "../common/BackToTop"
 
 
 function AppLayout({children}:{children:ReactNode}) {
@@ -13,6 +14,7 @@ function AppLayout({children}:{children:ReactNode}) {
         <Navbar/>
         <main className={styles.main}>
             {children}
+            <BackToTop/>
         </main>
         <Footer/>
     </>

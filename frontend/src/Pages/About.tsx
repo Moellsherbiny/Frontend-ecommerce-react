@@ -12,6 +12,7 @@ import MoneyBag from "@/assets/icons/MoneyBag"
 import Dollar from "@/assets/icons/Dollar.tsx"
 import {Shop} from "@/assets/icons/Shop"
 import ShoppingBag from "@/assets/icons/ShoppingBag"
+import Breadcrumbs from "@/Components/common/BreadCrumb";
 
 const { Meta } = Card;
 
@@ -68,6 +69,7 @@ const statsData = [
 const About: React.FC = () => {
   return (
     <div className={styles.container}>
+      <Breadcrumbs chain={[{ title: "Home", path: "/"}, { title: "About Us" }]} />
       <div className={styles.aboutContainer}>
         {/* Story Section */}
         <div className={styles.storySection}>

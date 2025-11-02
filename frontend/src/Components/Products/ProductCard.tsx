@@ -28,7 +28,7 @@ function ProductCard({ product, prefrences, loading = false }: { product: Produc
                 id: product.id,
                 name: product.name,
                 price: product.price,
-                image: `images/products/${product.image}`,
+                thumbnail: product.thumbnail,
                 quantity: 1,
             })
         );
@@ -100,7 +100,7 @@ function ProductCard({ product, prefrences, loading = false }: { product: Produc
 
                 </div>
                 <div className={styles.productImage}>
-                    <img src={`images/products/${product.image}`} alt="" />
+                    <img src={product.thumbnail} alt="" />
                 </div>
                 <button
                     onClick={handleAddToCart}

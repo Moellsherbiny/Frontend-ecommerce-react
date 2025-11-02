@@ -1,59 +1,107 @@
-import type { User, LoginCredentials, SignupCredentials } from "./authTypes";
+import type { User, LoginCredentials, SignupCredentials, AuthResponse } from "./authTypes";
 
-
-
-const STORAGE_KEY = "auth";
-
-export function saveUser(user: User) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+export function saveUser(user: User): void {
+  const users = getUsers();
+  users.push(user);
+  localStorage.setItem("users", JSON.stringify(users));
 }
 
-export function getUser(): User | null {
-  const data = localStorage.getItem(STORAGE_KEY);
-  return data ? JSON.parse(data) : null;
+export function getUsers(): User[] {
+  try {
+    const data = localStorage.getItem("users");
+    return data ? (JSON.parse(data) as User[]) : [];
+  } catch (error) {
+    console.error("Error reading users from localStorage:", error);
+    return [];
+  }
 }
 
-export function removeUser() {
-  localStorage.removeItem(STORAGE_KEY);
+export function removeUsers(): void {
+  localStorage.removeItem("users");
+}
+
+export function logoutUser(): void { 
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
 }
 
 
+export const setUserLoggedIn = (token: string, user: AuthResponse): void => {
+  localStorage.setItem("token", token);
+  localStorage.setItem("user", JSON.stringify(user));
+};
 
+export const getUser = (): AuthResponse | null => {
+  try {
+    const data = localStorage.getItem("user");
+    return data ? (JSON.parse(data) as AuthResponse) : null;
+  } catch {
+    return null;
+  }
+};
+
+// === Auth Services ===
 export async function loginService({
-  email,
+  identifier,
   password,
 }: LoginCredentials): Promise<User> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (email === "raheem" && password === "123") {
-        const user: User = {
-          id: "1",
-          name: "Test User",
-          email,
-          token: "fake-jwt-token",
-        };
-        saveUser(user);
+      try {
+        const users = getUsers();
+        if (!Array.isArray(users) || users.length === 0) {
+          return reject("No registered users found.");
+        }
+
+        const user = users.find(
+          (u) =>
+            (u.email === identifier || u.phone === identifier) &&
+            u.password === password
+        );
+
+        if (!user) {
+          return reject("Invalid email or password");
+        }
+
+        setUserLoggedIn(user.token, {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          token: user.token,
+        });
+
         resolve(user);
-      } else {
-        reject("Invalid email or password");
+      } catch (err) {
+        reject("Something went wrong while logging in");
       }
     }, 800);
   });
 }
 
-export async function signupService({name, email,
-//   password,
+export async function signupService({
+  name,
+  identifier,
+  password,
 }: SignupCredentials): Promise<User> {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const user: User = {
+      const users = getUsers();
+      const existingUser = users.find((u) => u.email === identifier || u.phone === identifier);
+      if (existingUser) {
+        return reject(new Error("User already exists"));
+      }
+
+      const newUser: User = {
         id: Date.now().toString(),
         name,
-        email,
-        token: "fake-jwt-token",
+        email: identifier.includes("@") ? identifier : undefined,
+        phone: identifier.includes("@") ? undefined : identifier,
+        password,
+        token: crypto.randomUUID?.() || "123456-secret-token",
       };
-      saveUser(user);
-      resolve(user);
+
+      saveUser(newUser);
+      resolve(newUser);
     }, 800);
   });
 }

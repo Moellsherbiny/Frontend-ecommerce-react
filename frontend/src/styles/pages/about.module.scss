@@ -2,18 +2,12 @@
 @use "@/styles/abstracts/mixins" as *;
 
 
-.aboutContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 
 .storySection {
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 4rem;
 
   @include desktop {
     flex-direction: column;
@@ -28,10 +22,10 @@
   }
 
   p {
-    font-size: 1rem;
+    font-size: 15px;
     color: $color-dark;
     margin-bottom: 1rem;
-    line-height: 1.7;
+    line-height: 26px;
   }
 
   @include desktop {
@@ -49,7 +43,9 @@
   position: relative;
   right: -15%;
   top: 30px;
-
+  height: 605px;
+  border-radius: 4px;
+  overflow: hidden;
   @include desktop {
     right: 0;
     margin: 0 auto;
@@ -57,23 +53,23 @@
 }
 
 .image {
-  width: 100%;
+ width:100%;
 }
 
 
 
 .statsSection {
   display: grid;
-  grid-template-columns: repeat(4, minmax(270px, 1fr));
-  justify-content: space-between;
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
+  margin: 80px 0;
 
   @include desktop{
-    grid-template-columns: repeat(2, minmax(270px, 1fr));
+    grid-template-columns: repeat(2,1fr);
   }
 
   @include tablet{
-    grid-template-columns: repeat(2, minmax(270px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
   &__card {
     display: flex;
@@ -81,12 +77,9 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 270px;
-    height: 230px;  
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba($color-dark, 0.3);
     transition: all 0.3s ease;
-
+    
     &:hover {
       background-color: $color-secondary-1;
       color: white;

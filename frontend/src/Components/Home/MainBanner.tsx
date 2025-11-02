@@ -5,8 +5,6 @@ import styles from "@/styles/components/Home/mainBanner.module.scss";
 const MainBanner = () => {
   const endTime: string = new Date(Date.now() + 6 * 24 * 60 * 60 * 1000).toString();
   
-  const time = new Date().getTime()
-  console.log(time);
   const sale = useCountdown(endTime);
   const [days, hours, minutes, seconds] = sale;
   return (

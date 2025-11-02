@@ -1,0 +1,116 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/mixins" as *;
+
+
+.header {
+  border-bottom: 0.5px solid rgba($color-dark, 0.3);
+  margin-top: 16px;
+}
+
+
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1rem;
+
+  // 🔹 Logo
+  .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    a {
+      color: $color-dark;
+      text-decoration: none;
+    }
+  }
+
+  // 🔹 Navigation Links (Desktop)
+  &__links {
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+
+      li {
+        a {
+          color: $color-dark;
+          font-size: 1rem;
+          font-weight: 400;
+          transition: color 0.2s ease;
+        }
+      }
+    }
+
+    // Hide on tablets & phones
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__shop {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+
+   
+    .searchBox {
+      min-width: 230px;
+
+      @include desktop {
+        display: none;
+      }
+    }
+
+    
+    &__icons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      svg {
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .active {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
+    text-decoration-color: rgba($color-dark, 0.3);
+  }
+
+  .menuBtn {
+    display: none;
+    font-size: 21px;
+    margin-bottom: 6px;
+
+    @include desktop {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.search {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+  border: 1px solid rgba($color-dark, 0.2);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}

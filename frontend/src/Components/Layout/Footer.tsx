@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/components/footer.module.scss";
+import styles from "@/styles/components/layout/footer.module.scss";
 import { Link } from "react-router";
 import { GoPaperAirplane } from "react-icons/go";
 import googlePlay from "@/assets/icons/google-store.svg";

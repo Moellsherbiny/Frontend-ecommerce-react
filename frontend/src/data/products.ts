@@ -1,5 +1,5 @@
-import type { ProductCardProps } from "@/types/product/productCard";
-export const products: ProductCardProps[] = [
+import type { Product } from "@/types/product/product";
+export const products: Product[] = [
   {
     id: 1,
     name: "AK-900 Wired Keyboard",
@@ -20,7 +20,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "AK-900-Wired-Keyboard.png",
+    thumbnail: "/images/products/AK-900-Wired-Keyboard.png",
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "ASUS-FHD-Gaming-Laptop.png",
+    thumbnail: "/images/products/ASUS-FHD-Gaming-Laptop.png",
   },
 
   {
@@ -65,7 +65,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 14 Days Return",
     },
-    image: "CANON-EOS-DSLR-Camera.png",
+    thumbnail: "/images/products/CANON-EOS-DSLR-Camera.png",
   },
   {
     id: 5,
@@ -87,7 +87,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "Curology-Product-Set.png",
+    thumbnail: "/images/products/Curology-Product-Set.png",
   },
   {
     id: 6,
@@ -108,7 +108,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "GP11-Shooter-USB-Gamepad.png",
+    thumbnail: "/images/products/GP11-Shooter-USB-Gamepad.png",
   },
   {
     id: 7,
@@ -130,7 +130,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "Gucci-duffle-bag.png",
+    thumbnail: "/images/products/Gucci-duffle-bag.png",
   },
   {
     id: 8,
@@ -152,7 +152,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 14 Days Return",
     },
-    image: "GUCCI-INTENSE.png",
+    thumbnail: "/images/products/GUCCI-INTENSE.png",
   },
   {
     id: 10,
@@ -174,7 +174,13 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 14 Days Return",
     },
-    image: "HAVIT-HV-G92-Gamepad.png",
+    thumbnail: "/images/products/HAVIT-HV-G92-Gamepad.png",
+    images:[
+      "/images/products/Havic-HV-G-92-Gamepad/one.png",
+      "/images/products/Havic-HV-G-92-Gamepad/two.png",
+      "/images/products/Havic-HV-G-92-Gamepad/three.png",
+      "/images/products/Havic-HV-G-92-Gamepad/five.png",
+    ]
   },
   {
     id: 11,
@@ -196,7 +202,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "IPS-LCD-Gaming-Monitor.png",
+    thumbnail: "/images/products/IPS-LCD-Gaming-Monitor.png",
   },
   {
     id: 12,
@@ -218,7 +224,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "JBL-boombox-hero.png",
+    thumbnail: "/images/products/JBL-boombox-hero.png",
   },
   {
     id: 13,
@@ -240,7 +246,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: false,
       returnPolicy: "Free 14 Days Return",
     },
-    image: "Jr.Zoom-Soccer-Cleats.png",
+    thumbnail: "/images/products/Jr.Zoom-Soccer-Cleats.png",
   },
   {
     id: 14,
@@ -262,7 +268,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "Kids-Electric-Car.png",
+    thumbnail: "/images/products/Kids-Electric-Car.png",
   },
 
   {
@@ -285,7 +291,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 14 Days Return",
     },
-    image: "Quilted-Satin-Jacket.png",
+    thumbnail: "/images/products/Quilted-Satin-Jacket.png",
   },
   {
     id: 17,
@@ -307,7 +313,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "RGB liquid-CPU-Cooler.png",
+    thumbnail: "/images/products/RGB liquid-CPU-Cooler.png",
   },
   {
     id: 18,
@@ -329,7 +335,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "S-Series-Comfort-Chair.png",
+    thumbnail: "/images/products/S-Series-Comfort-Chair.png",
   },
   {
     id: 19,
@@ -351,7 +357,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: false,
       returnPolicy: "Free 14 Days Return",
     },
-    image: "Small-BookSelf.png",
+    thumbnail: "/images/products/Small-BookSelf.png",
   },
   {
     id: 20,
@@ -373,7 +379,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "speakers.png",
+    thumbnail: "/images/products/speakers.png",
   },
   {
     id: 21,
@@ -395,7 +401,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "The-north-coat.png",
+    thumbnail: "/images/products/The-north-coat.png",
   },
   {
     id: 15,
@@ -416,7 +422,7 @@ export const products: ProductCardProps[] = [
       freeDelivery: true,
       returnPolicy: "Free 30 Days Delivery Returns",
     },
-    image: "playstation.png",
+    thumbnail: "/images/products/playstation.png",
   },
 ];
 
@@ -424,26 +430,26 @@ export const getAllProducts = async () => {
   await new Promise((resolve) => setTimeout(() => resolve(products), 1000));
 };
 
-export const getFlashSaleProducts = async (): Promise<ProductCardProps[]> => {
+export const getFlashSaleProducts = async (): Promise<Product[]> => {
   const flashSaleProducts = products.filter(
     (prod) => prod.discount && prod.discount >= 25
   );
 
-  await new Promise((resolve) => setTimeout(resolve, 4000)); // simulate delay
+  await new Promise((resolve) => setTimeout(resolve, 1000)); 
 
   return flashSaleProducts;
 };
 
-export const getBestSellingProducts = async (): Promise<ProductCardProps[]> => {
+export const getBestSellingProducts = async (): Promise<Product[]> => {
   const flashSaleProducts = products.filter((prod) => prod.rating >= 4.9);
 
-  await new Promise((resolve) => setTimeout(resolve, 4000)); // simulate delay
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return flashSaleProducts;
 };
 
-export const getOtherProducts = async (): Promise<ProductCardProps[]> => {
-  let otherProducts: ProductCardProps[] = [];
+export const getOtherProducts = async (): Promise<Product[]> => {
+  let otherProducts: Product[] = [];
 
   const notSaleProducts = products.filter((prod) => prod.rating < 4.5);
   const notFlashProducts = products.filter(
@@ -456,7 +462,7 @@ export const getOtherProducts = async (): Promise<ProductCardProps[]> => {
   return otherProducts;
 };
 
-export const getProductById = async (id: number) => {
+export const getProductById = async (id: number): Promise<Product | undefined>=> {
   const product = products.find((prod) => prod.id === id);
 
   await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -466,7 +472,8 @@ export const getProductById = async (id: number) => {
 
 export const getRelatedProducts = async (
   category: string
-): Promise<ProductCardProps[]> => {
-  await new Promise((res) => setTimeout(res, 500));
+): Promise<Product[]> => {
+  await new Promise((res) => setTimeout(res, 1000));
   return products.filter((p) => p.category === category).slice(0, 4);
 };
+

@@ -1,5 +1,5 @@
 import styles from "@/styles/components/Home/categories.module.scss"
-import { HorizontalScroll, ScrollButtonBackward, ScrollButtonForward } from "./ScrollButtons/ScrollButtons";
+import { HorizontalScroll, ScrollButtonBackward, ScrollButtonForward } from "./ScrollButtons";
 import { useHorizontalScroll } from "@/hooks/scrollHooks/useHorizontalScroll";
 import SectionTitle from "./SectionTitle";
 import PhoneIcon from "@/assets/icons/Phone"
@@ -8,6 +8,7 @@ import CameraIcon from "@/assets/icons/Camera"
 import SmartWatchIcon from "@/assets/icons/SmartWatch"
 import HeadPhoneIcon from "@/assets/icons/HeadPhone"
 import GamePadIcon from "@/assets/icons/GamePad"
+import { Link } from "react-router";
 
 function Categories() {
     const { scrollRef, isAtStart, isAtEnd, scroll } = useHorizontalScroll()
@@ -52,9 +53,11 @@ function Categories() {
                 <ul className={styles.categories__container__list} >
                     {categories.map((category) =>
                         <li key={category.title} className={styles.categories__container__list__item}>
-                            {category.icon}
-                            <h6 className={styles.titleRegular}> {category.title}</h6>
-                            <div className={styles.categories__container__list__item__bg}></div>
+                            <Link to={`/products?category=electronic`} className={styles.categories__container__list__item__link}>
+                                {category.icon}
+                                <h6 className={styles.titleRegular}> {category.title}</h6>
+                                <div className={styles.categories__container__list__item__bg}></div>
+                            </Link>
                         </li>
                     )}
                 </ul>

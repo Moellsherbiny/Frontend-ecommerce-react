@@ -1,18 +1,18 @@
 @use "../../styles/abstracts/mixins" as *;
 @use "../../styles/abstracts/variables" as *;
 
-.container {
+
   .authLayout {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 129px;
+    gap: 100px;
     padding: 30px 0;
-
-    form {
+    .formContainer {
       position: relative;
       right: 0;
-      width: 60%;
+      width: 50%;
+      max-width: 370px;
       padding: 15px 0;
       display: flex;
       flex-direction: column;
@@ -27,13 +27,9 @@
         flex-direction: column;
         gap: 12px;
       }
-      .errorText {
-        color: #ff4d4f; // أو #ff4d4f لو ما عندكش متغير جاهز
-        font-size: 14px;
-        margin-top: -25px;
-        margin-bottom: 10px;
-        text-align: left;
-        transition: opacity 0.3s ease;
+     
+      .inputField{
+        padding: 10px 0 ;
       }
       .actions {
         display: flex;
@@ -41,7 +37,7 @@
         gap: 10px;
         width: 100%;
         text-align: center;
-
+        margin-top: 60px;
         .buttons {
           button {
             font-size: 16px;
@@ -97,28 +93,29 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
+      width: 805px;
+      height: 100vh;
       left: -70px;
       background-color: #cbe4e8;
       overflow: hidden;
       img {
-        width: 100%;
+        object-fit: cover;
       }
     }
   }
-}
+
 
 @include tablet {
-  .container {
+  
     .authLayout {
       grid-template-columns: 1fr;
       padding: auto 0;
       margin: 0;
 
-      form {
+      .formContainer {
         width: 100% !important;
         padding: 0;
-        margin: 0;
+        margin: 20px 0;
       }
 
       .image {
@@ -126,4 +123,4 @@
       }
     }
   }
-}
+

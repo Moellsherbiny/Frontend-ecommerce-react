@@ -1,19 +1,39 @@
-@use "../../../styles/abstracts/variables" as *;
-@use "../../../styles/abstracts/mixins" as *;
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/mixins" as *;
+
 .carousel {
-    margin-top: 32px;
-    width: 75%;
+  margin: 32px 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 75%;
+  background-color: black;
+  @include desktop{
+    width: 100%;
+  }
   .item {
-    display: flex;
+    display: flex !important;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     background-color: black;
     color: white;
     padding: 16px 64px;
-    overflow: hidden;
+    height: 344px;
+    @include tablet{
+      flex-direction: column-reverse;
+      padding: 16px 24px;
+      height: auto;
+    }
     .imageContainer {
-      width: 60%;;
+      width: 40% !important;
+      @include tablet{
+        width: 60% !important;
+        
+      }
+      overflow: hidden;
       img {
         width: 100%;
+        object-fit: cover;
       }
     }
     .info {
@@ -22,90 +42,61 @@
       justify-content: center;
       gap: 40px;
       padding: 50px 0px;
-      .headingSemiBold{
+      @include tablet{
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        padding: 12px 0px;
+      }
+      .headingSemiBold {
         color: $color-primary;
         font-size: 48px;
+        max-width: 294px;
+        @include tablet{
+          font-size: 32px;
+          max-width: 100%;
+        }
       }
 
-      .brand{
+      .brand {
         display: flex;
         align-items: center;
-        gap: 24px ;
-        .titleRegualar{
+        gap: 24px;
+        .titleRegualar {
           position: relative;
           top: 3px;
           font-size: 24px;
-        
-        }
-      }
-    }
-
-  }
-}
-
-@include desktop{
-  .carousel{
-    width: 100%;
-    .item{
-      padding: 10px;
-      .imageContainer{
-        position: relative;
-        top: 1px;
-        width: 50%;
-      }
-      .info{
-        gap: 1px;
-        padding: 10px 5px;
-        .brand{
-          gap: 5px;
-          .titleRegualar{
-            font-size: 14px;
-          }
-          svg{
-            width: 24px;
-            height: 24px;
-          }
-        }
-        .headingSemiBold{
-          font-size: 24px;
-          letter-spacing: 1px;
         }
       }
     }
   }
-}
-
-
-
-@include mobile{
-  .carousel{
-    width: 100%;
-    .item{
-      padding: 40px 20px;
-      .imageContainer{
-        position: relative;
-        top: 1px;
-        width: 50%;
-      }
-      .info{
-        gap: 10px;
-        padding: 10px 5px;
-        .brand{
-          gap: 5px;
-          .titleRegualar{
-            font-size: 12px;
-          }
-          svg{
-            width: 24px;
-            height: 24px;
-          }
-        }
-        .headingSemiBold{
-          font-size: 16px;
-          letter-spacing: 1px;
-          line-height: 20px;
-        }
-      }
-    }
+  :global(.slick-dots .slick-active) {
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50%;
+    
+  }
+  :global(.slick-dots .slick-active::after) {
+   background-color: $color-secondary-1 !important;
+   border: 2px solid $color-primary !important;
+  }
+  
+  
+  
+  :global(.slick-dots li) {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  :global(.slick-dots li ) {
+    border: 2px solid  !important;
+    
+  }
+  :global(.slick-dots li button),
+  :global(.slick-dots .slick-active::after) {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
   }
 }
+

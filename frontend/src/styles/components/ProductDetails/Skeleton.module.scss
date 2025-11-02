@@ -1,0 +1,61 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/mixins" as *;
+
+.productDetails {
+  padding: 2rem 0;
+}
+
+
+.imageSection {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.thumb {
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 4px;
+}
+
+.mainImage {
+  flex: 1;
+  width: 100% !important;
+  height: 350px !important;
+  border-radius: 8px;
+}
+
+.detailsCard {
+  border-radius: 8px;
+  padding: 1.5rem;
+
+  .ant-skeleton {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.titleSkeleton {
+  width: 60% !important;
+  height: 32px !important;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.priceSkeleton {
+  width: 120px !important;
+  height: 40px !important;
+}

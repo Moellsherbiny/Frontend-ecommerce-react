@@ -1,14 +1,14 @@
 import styles from "@/styles/pages/home.module.scss"
 import Carousel from "@/Components/Home/Carousel"
-import Sidebar from "@/Components/Home/MainSection/Sidebar"
+import Sidebar from "@/Components/Home/Sidebar"
 import type { CarouselItem } from "@/types/carousel"
 import { FaApple } from "react-icons/fa";
-import FlashSales from "@/Components/Home/FlashSales/FlashSales";
-import Featured from "@/Components/Home/Featured/Featured";
+import FlashSales from "@/Components/Home/FlashSales";
+import Featured from "@/Components/Home/Featured";
 import ThisMonth from "@/Components/Home/ThisMonth";
 import Categories from "@/Components/Home/Categories";
 import MainBanner from "@/Components/Home/MainBanner";
-import OurProducts from "@/Components/Home/OurProducts/OurProducts";
+import OurProducts from "@/Components/Home/OurProducts";
 import { Divider } from "antd";
 
 
@@ -24,13 +24,41 @@ const carouselItems: CarouselItem[] =[
 },
   {
     id:2,
-    image:"",
+    image:"images/iphone-17.jpg",
     brand:{
-      icon:"",
-      name:"",
+      icon:<FaApple size={40} />,
+      name:"iPhone 17 Series",
     },
-    description:"" 
+    description:"Up to 15% off Voucher"
 },
+  {
+    id:3,
+    image:"images/AirPods-Pro.webp",
+    brand:{
+      icon:<FaApple size={40} />,
+      name:"AirPods Pro",
+    },
+    description:"Up to 20% off Voucher"
+},
+  { 
+    id:1,
+    image:"/images/iphone-image.jpg",
+    brand:{
+      icon:<FaApple size={40} />,
+      name:"iPhone 14 Series",
+    },
+    description:"Up to 10% off Voucher" 
+},
+  {
+    id:2,
+    image:"images/iphone-17.jpg",
+    brand:{
+      icon:<FaApple size={40} />,
+      name:"iPhone 17 Series",
+    },
+    description:"Up to 15% off Voucher"
+},
+
 ]
 
 function HomePage() {

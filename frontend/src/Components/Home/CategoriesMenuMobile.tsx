@@ -1,27 +1,37 @@
 import styles from "@/styles/components/Home/categoriesMenuMobile.module.scss"
-import { categories } from "./MainSection/data"
+import { categories } from "@/data/categories"
 import { Link } from "react-router"
-import {MenuOutlined,} from "@ant-design/icons";
-function index() {
-  return (
-    <div className={styles.horizontalSidebar}>
-      <button>
-        <MenuOutlined size={24} />
-      </button>
-      <h6 className={styles.horizontalSidebar__title}>Categories</h6>
-      
-      <ul className={styles.horizontalSidebar__list}>
+import { MenuOutlined, } from "@ant-design/icons";
+import { Button, Drawer } from "antd";
+import { useState } from "react";
+import Sidebar from "./Sidebar";
+import CategoriesMenu from "./CategoriesMenu";
+function CategoriesMobile() {
+  const [open, setOpen] = useState(false);
 
-        {categories.map((category, index) =>
-          <li key={index}>
-            <Link to={"/"}>
-              {category?.key}
-            </Link>
-          </li>
-        )}
-      </ul>
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
+
+
+  return (
+    <div className={styles.categoriesMobile}>
+      <Button onClick={showDrawer} className={styles.horizontalSidebar__button}>
+        <MenuOutlined size={24} />
+      </Button>
+      
+      <h6 className={styles.categoriesMobile__title}>Categories</h6>
+      <Drawer title="Categories" width={250}placement="left" onClose={onClose} open={open}>
+        
+        <CategoriesMenu />
+        
+      </Drawer>
     </div>
   )
 }
 
-export default index
+export default CategoriesMobile
