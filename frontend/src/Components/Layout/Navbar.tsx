@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
-import { Menu, Drawer, Button, Badge, Input } from "antd";
+import { Menu, Drawer, Button, Badge, Input, Divider } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import UserMenu from "./UserMenu";
@@ -9,6 +9,7 @@ import WishlistIcon from "@/assets/icons/WishlistIcon";
 import { type RootState } from "@/app/store";
 import styles from "@/styles/components/layout/header.module.scss";
 import useAuth from "@/hooks/useAuth";
+import SearchBox from "./SearchBox";
 
 function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -91,12 +92,7 @@ function Navbar() {
           <div className={styles.navbar__shop}>
             <div className={styles.navbar__actions}>
               {/* Search Input */}
-              <Input.Search
-                placeholder="What are you looking for?"
-                variant="filled"
-                className={styles.searchBox}
-                style={{ minWidth: "237px" }}
-              />
+             <SearchBox className={styles.searchBox}/>
 
               
               <div className={styles.navbar__actions__icons}>
@@ -129,13 +125,11 @@ function Navbar() {
               onClose={() => toggleDrawer(false)}
               open={drawerOpen}
             >
-              <Input.Search
-                placeholder="What are you looking for?"
-                variant="filled"
-                className={styles.searchBox}
-                style={{ paddingBottom: "10px" }}
-                onSearch={(value) => console.log(value)}
+              <SearchBox
+                styles={{ paddingBottom: "10px" }}
+                
               />
+              <Divider/>
               <Menu
                 mode="vertical"
                 selectedKeys={[current]}

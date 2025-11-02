@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Select, Empty,Typography } from "antd";
+import { Select, Empty } from "antd";
 import styles from "@/styles/pages/categoryPage.module.scss";
 import ProductCard from "@/Components/Products/ProductCard";
 import { products as productData } from "@/data/products.ts";
@@ -9,7 +9,6 @@ import type { ProductCardProps } from "@/types/product/productCard";
 import SectionTitle from "@/Components/Home/SectionTitle";
 import SEO from "@/Components/SEO";
 
-const { Title } = Typography;
 
 const CategoryPage = () => {
 
@@ -59,7 +58,7 @@ const CategoryPage = () => {
       <div className="container">
 
         <div className={styles.header}>
-          <SectionTitle title={`${ selectedCategory} - Products`}/>
+          <SectionTitle title={`${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)} - Products`} />
 
           <div className={styles.controls}>
             <Select

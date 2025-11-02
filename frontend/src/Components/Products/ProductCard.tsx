@@ -100,7 +100,7 @@ function ProductCard({ product, prefrences, loading = false }: { product: Produc
 
                 </div>
                 <div className={styles.productImage}>
-                    <img src={product.thumbnail} alt="" />
+                    <img src={product.thumbnail} alt="" loading="lazy" />
                 </div>
                 <button
                     onClick={handleAddToCart}
