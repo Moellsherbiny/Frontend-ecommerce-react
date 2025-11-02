@@ -19,7 +19,7 @@ const PaymentForm: React.FC<Props> = ({ onNext, disabled }) => {
       form={form}
       disabled={disabled}
       onFinish={onFinish}
-      className="payment-form"
+      variant="filled"
     >
       <Form.Item
         name="cardNumber"

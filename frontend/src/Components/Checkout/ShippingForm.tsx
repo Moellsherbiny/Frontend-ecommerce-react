@@ -9,7 +9,7 @@ const ShippingForm: React.FC<Props> = ({ onNext }) => {
   const [form] = Form.useForm();
   const [saveInfo, setSaveInfo] = React.useState(false);
 
-  // ✅ عند الفتح، نحاول نجيب الداتا القديمة من localStorage
+  
   useEffect(() => {
     const savedData = localStorage.getItem("shippingData");
     if (savedData) {
@@ -18,7 +18,7 @@ const ShippingForm: React.FC<Props> = ({ onNext }) => {
     }
   }, [form]);
 
-  // ✅ لو الـ checkbox اتفعّل
+  
   const onChange: CheckboxProps["onChange"] = (e) => {
     const checked = e.target.checked;
     setSaveInfo(checked);
@@ -31,7 +31,7 @@ const ShippingForm: React.FC<Props> = ({ onNext }) => {
     }
   };
 
-  // ✅ لما المستخدم يكمّل الفورم
+  
   const onFinish = (values: any) => {
     if (saveInfo) {
       localStorage.setItem("shippingData", JSON.stringify(values));
@@ -44,7 +44,8 @@ const ShippingForm: React.FC<Props> = ({ onNext }) => {
       layout="vertical"
       form={form}
       onFinish={onFinish}
-      className="shipping-form"
+   
+      variant="filled"
     >
       <Form.Item
         name="fullName"

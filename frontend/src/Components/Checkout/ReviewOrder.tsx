@@ -39,7 +39,7 @@ const ReviewOrder: React.FC<Props> = ({ cart, onPaymentChange }) => {
           <div key={item.id} className={styles.cartItem}>
             <div className={styles.productInfo}>
               <Image
-                src={item.image}
+                src={item.thumbnail}
                 alt={item.name}
                 width={60}
                 height={60}
