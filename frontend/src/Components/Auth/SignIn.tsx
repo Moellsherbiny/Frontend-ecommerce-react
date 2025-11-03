@@ -31,15 +31,15 @@ function SignIn() {
     try {
       await dispatch(
         loginUser({ identifier: data.identifier, password: data.password })
-      );
+      ).unwrap();
       messageApi.open({
         type: "success",
         content: "Logged in successfully!",
       });
-    } catch (err: any) {
+    } catch {
       messageApi.open({
         type: "error",
-        content: err?.message || "Login failed",
+        content: error,
       });
     }
   };
@@ -111,13 +111,6 @@ function SignIn() {
               <Link to="/auth/forgot-password">Forget Password?</Link>
             </div>
           </div>
-
-          {/* Server Error */}
-          {error && (
-            <p className={authStyles.errorText} style={{ marginTop: "10px" }}>
-              {error}
-            </p>
-          )}
         </Form>
       </div>
     </AuthLayout>

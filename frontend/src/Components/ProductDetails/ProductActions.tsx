@@ -1,4 +1,4 @@
-import { Button, InputNumber } from "antd";
+import { Button, InputNumber, message } from "antd";
 import {
   MinusOutlined,
   PlusOutlined,
@@ -9,7 +9,6 @@ import styles from "@/styles/pages/productDetails.module.scss";
 import { addToCart, updateQuantity } from "@/features/products/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "@/app/store";
-import { useNavigate } from "react-router";
 
 
 interface Props {
@@ -21,9 +20,9 @@ interface Props {
   setQuantity: (qty: number) => void;
 }
 
-function ProductActions({id, name, price, thumbnail }: Props){
+function ProductActions({ id, name, price, thumbnail }: Props) {
+  const [messageApi, contextHolder] = message.useMessage();
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
   const cart = useSelector((state: RootState) => state.cart.items);
   const quantity = cart.find((item) => item.id === id)?.quantity || 1;
   const handleAddToCart = () => {
@@ -34,31 +33,46 @@ function ProductActions({id, name, price, thumbnail }: Props){
       thumbnail,
       quantity,
     }));
-    navigate("/cart");
+    messageApi.success(`${name} added to cart!`);
+
   }
-  const handleQuantityChange = (quantity: number) => {
-    dispatch(updateQuantity({
-      id,
-      quantity,
-    }));
+const handleQuantityChange = (newQuantity: number) => {
+  if (newQuantity < 1) return;
+  const existingItem = cart.find((item) => item.id === id);
+  if (!existingItem) {
+    dispatch(
+      addToCart({
+        id,
+        name,
+        price,
+        thumbnail,
+        quantity: newQuantity,
+      })
+    );
+  } else {
+    dispatch(updateQuantity({ id, quantity: newQuantity }));
   }
-  return(
+};
+
+  return (
 
     <div className={styles.actions}>
-    <div className={styles.qty}>
-      <Button
-        icon={<MinusOutlined />}
-        onClick={()=>handleQuantityChange(quantity - 1)}
-      />
-      <InputNumber min={1} value={quantity} readOnly />
-      <Button icon={<PlusOutlined />} onClick={() => handleQuantityChange(quantity + 1)} />
-    </div>
+      {contextHolder}
+      <div className={styles.qty}>
+        <Button
+          icon={<MinusOutlined />}
+          onClick={() => handleQuantityChange(quantity - 1)}
+        />
+        <InputNumber min={1} value={quantity} readOnly />
+        <Button icon={<PlusOutlined />} onClick={() => handleQuantityChange(quantity + 1)} />
+      </div>
 
-    <Button type="primary" icon={<ShoppingCartOutlined />} size="large" onClick={handleAddToCart}>
-      Buy Now
-    </Button>
-    <Button icon={<HeartOutlined />} size="large" />
-  </div>
-)};
+      <Button type="primary" icon={<ShoppingCartOutlined />} size="large" onClick={handleAddToCart}>
+        Buy Now
+      </Button>
+      <Button icon={<HeartOutlined />} size="large" />
+    </div>
+  )
+};
 
 export default ProductActions;
