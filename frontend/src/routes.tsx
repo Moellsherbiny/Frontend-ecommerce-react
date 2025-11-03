@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router";
-import Home from "./Pages/Home";
-import Contact from "./Pages/Contact";
-import About from "./Pages/About";
-import Signup from "./Pages/auth/signup";
-import Signin from "./Pages/auth/signin";
-import NotFound from "./Pages/NotFound";
+import Home from "@/Pages/Home";
+import Contact from "@/Pages/Contact";
+import About from "@/Pages/About";
+import Signup from "@/Pages/auth/signup";
+import Signin from "@/Pages/auth/signin";
+import NotFound from "@/Pages/NotFound";
 import CategoryPage from "@/Pages/Products";
 import CartPage from "@/Pages/Cart";
 import Wishlist from "@/Pages/WhishList";
