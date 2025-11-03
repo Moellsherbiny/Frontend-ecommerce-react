@@ -1,10 +1,7 @@
 import styles from "@/styles/components/Home/categoriesMenuMobile.module.scss"
-import { categories } from "@/data/categories"
-import { Link } from "react-router"
 import { MenuOutlined, } from "@ant-design/icons";
 import { Button, Drawer } from "antd";
 import { useState } from "react";
-import Sidebar from "./Sidebar";
 import CategoriesMenu from "./CategoriesMenu";
 function CategoriesMobile() {
   const [open, setOpen] = useState(false);

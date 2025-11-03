@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
-import { Menu, Drawer, Button, Badge, Input, Divider } from "antd";
+import { Menu, Drawer, Button, Badge, Divider } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import UserMenu from "./UserMenu";

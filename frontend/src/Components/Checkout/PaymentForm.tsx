@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/store";
 import {schema} from "@/validations/paymentSchema"
-import styles from "@/styles/components/Checkout/paymentForm.module.scss";
 import CardInput from "./CardInput";
 
 interface FormValues {
@@ -16,7 +15,7 @@ interface FormValues {
 function PaymentForm() {
   const paymentMethod = useSelector((state: RootState) => state.payment.method);
   const disabled = paymentMethod === "cash";
-  const [cardError, setCardError] = useState<string | null>(null);
+  
   const stripe = useStripe();
   const elements = useElements();
 
@@ -89,7 +88,7 @@ function PaymentForm() {
       </Form.Item>
 
       
-     <Form.Item label="Card Details" help={cardError || ""} validateStatus={cardError ? "error" : ""}>  
+     <Form.Item label="Card Details">  
           <CardInput/> 
       </Form.Item>
 
