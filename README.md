@@ -31,7 +31,7 @@ The app is styled consistently using **Ant Design** and **SCSS**, ensuring a res
 
 ### Account Page
 - User profile info  
-- Order history (Ant Design Table)  
+  
 
 ### Static Pages
 - About Page (company story)  
@@ -121,11 +121,14 @@ You can view the original design file on Figma:
 
 ## 📷 Screenshots
 
-| Page            | Desktop View                                          |
+| Page            | Desktop                                               |
 | --------------- | ----------------------------------------------------- |
-| Home            | ![Home Desktop](./screenshots/home.jpeg)         |
-| Product Details | ![Product Desktop](./screenshots/productDetails.jpeg)   |
-| Checkout        | ![Checkout Desktop](./screenshots/checkout.jpeg)        |
-| Cart            | ![Cart Desktop](./screenshots/cart.jpeg)                |
-| Wishlist        | ![Wishlist Desktop](./screenshots/wishlist.jpeg) |
+| Home            | ![Home Desktop](./screenshots/home-page.jpeg)         |
+| Login           | ![Login Desktop](./screenshots/signin.jpeg)           |
+| Signup          | ![Signup Desktop](./screenshots/signup.jpeg)          |
+| About           | ![About Desktop](./screenshots/about.jpeg)            |   
+| Contact         | ![Contact Desktop](./screenshots/contact.jpeg)        |
+| Checkout        | ![Checkout Desktop](./screenshots/checkout.jpeg)      |
+| Cart            | ![Cart Desktop](./screenshots/cart.jpeg)              |
+| Wishlist        | ![Wishlist Desktop](./screenshots/wishlist.jpeg)      |
 
