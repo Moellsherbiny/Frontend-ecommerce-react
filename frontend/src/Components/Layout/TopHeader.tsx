@@ -1,5 +1,6 @@
 import { useState } from "react"
 import styles from "../../styles/components/topHeader.module.scss"
+import { Link } from "react-router"
 
 function TopHeader() {
   const [isVisibile, setIsVisibile] = useState(false)
@@ -8,7 +9,7 @@ function TopHeader() {
       <div className={styles.container}>
           <p className={styles.titleRegular}>
             Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
-            <a className={styles.shopNow} href="#">ShopNow</a></p>
+            <Link className={styles.shopNow} to="/products">ShopNow</Link></p>
         
         <div className={styles.topHeader__lang}>
           <button className={styles.topHeader__lang__btn} onClick={()=>{setIsVisibile(!isVisibile)}}>

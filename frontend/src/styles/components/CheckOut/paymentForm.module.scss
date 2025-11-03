@@ -1,0 +1,28 @@
+@use "@/styles/abstracts/variables" as *;
+
+
+.cardWrapper {
+  background-color: rgba(0, 0, 0, 0.04);
+  padding: 14px 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  width: 100%;
+
+  .StripeElement {
+    width: 100%;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  border: 1px solid black;
+  background-color: rgba(0, 0, 0, 0.08);
+  cursor: not-allowed;
+}
+
+
+.focused {
+  border-color: $color-secondary-1; 
+  background-color: #fff;
+}

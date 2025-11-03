@@ -59,9 +59,11 @@ const cartSlice = createSlice({
     ) => {
       const item = state.items.find((i) => i.id === action.payload.id);
       if (item) item.quantity = action.payload.quantity;
+      saveCartToLocalStorage(state.items);
     },
     clearCart: (state) => {
       state.items = [];
+      saveCartToLocalStorage(state.items);
     },
   },
 });

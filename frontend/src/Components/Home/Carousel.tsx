@@ -8,7 +8,7 @@ import { Carousel } from 'antd';
 
 function AppCarousel({ items }: CarouselProps) {
     const onChange = (currentSlide: number) => {
-        console.log(currentSlide);
+        
     };
     return (
         <div className={CarouselStyles.carousel}>

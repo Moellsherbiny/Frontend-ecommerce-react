@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Row, Col } from "antd";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/store";
@@ -9,12 +8,19 @@ import useAuth from "@/hooks/useAuth";
 import CheckoutSteps from "@/Components/Checkout/CheckoutSteps";
 import OrderSummary from "@/Components/Checkout/OrderSummary";
 import styles from "@/styles/components/Checkout/Checkout.module.scss";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
-const Checkout: React.FC = () => {
+const STRIPE_PUBLIC_KEY = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
+
+
+const stripePromise = loadStripe(STRIPE_PUBLIC_KEY);
+function Checkout ()  {
   const { isLoggedIn } = useAuth();
   const cart = useSelector((state: RootState) => state.cart.items);
-
-  if (!isLoggedIn) return <Navigate to="/" />;
+  console.log(STRIPE_PUBLIC_KEY);
+  
+  if (!isLoggedIn) return <Navigate to="/auth/signup" />;
 
   const breadItems = [
     { title: "Account" },
@@ -38,7 +44,9 @@ const Checkout: React.FC = () => {
           <div className={styles.checkoutCard}>
             <Row gutter={[24, 24]} justify="space-between">
               <Col xs={24} md={12} style={{ padding: 5 }}>
+              <Elements stripe={stripePromise}>
                 <CheckoutSteps />
+              </Elements>
               </Col>
 
               <Col xs={24} md={10}>

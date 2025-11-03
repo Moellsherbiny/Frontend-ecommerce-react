@@ -31,16 +31,21 @@ export const setUserLoggedIn = (token: string, user: AuthResponse): void => {
   localStorage.setItem("user", JSON.stringify(user));
 };
 
-export const getUser = (): AuthResponse | null => {
+export const getUser = (): User | null => {
   try {
-    const data = localStorage.getItem("user");
-    return data ? (JSON.parse(data) as AuthResponse) : null;
+    const data = JSON.parse(localStorage.getItem("user") || "{}");
+    const users = getUsers();
+    const user = users.find((u) => u.id === data.id)
+    if (!user) {
+      return null;
+    }
+    return user
   } catch {
     return null;
   }
 };
 
-// === Auth Services ===
+
 export async function loginService({
   identifier,
   password,

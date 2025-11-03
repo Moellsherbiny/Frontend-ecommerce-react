@@ -1,28 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Typography, Radio,  Image, Space } from "antd";
+import { setPaymentMethod } from "@/features/products/paymentSlice";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "@/app/store";
+
 import styles from "@/styles/components/CheckOut/ReviewOrder.module.scss";
 import CouponCode from "@/Components/Products/CoponCode"
 import visaIco from "@/assets/images/banks/Visa.png"
 import masterCardIco from "@/assets/images/banks/image 31.png"
 import bkashIco from "@/assets/images/banks/Bkash.png"
 import NagadIco from "@/assets/images/banks/Nagad.png"
+
 const {  Text } = Typography;
 
 interface Props {
   cart: any[];
-  onPaymentChange?: (method: string) => void;
-  shippingData?: any;
-  paymentData?: any;
-  full?: boolean;
-  compact?: boolean;
 }
 
-const ReviewOrder: React.FC<Props> = ({ cart, onPaymentChange }) => {
-  const [paymentMethod, setPaymentMethod] = useState("cash");
-
-  useEffect(() => {
-    if (onPaymentChange) onPaymentChange(paymentMethod);
-  }, [paymentMethod]);
+const ReviewOrder: React.FC<Props> = ({ cart }) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const paymentMethod = useSelector((state:RootState) => state.payment.method)
 
   const subtotal = cart.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -74,7 +71,7 @@ const ReviewOrder: React.FC<Props> = ({ cart, onPaymentChange }) => {
       <div className={styles.paymentSection}>
        
         <Radio.Group
-          onChange={(e) => setPaymentMethod(e.target.value)}
+          onChange={(e) => dispatch(setPaymentMethod(e.target.value))}
           value={paymentMethod}
           className={styles.paymentOptions}
           

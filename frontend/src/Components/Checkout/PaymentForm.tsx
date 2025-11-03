@@ -1,55 +1,103 @@
-import React from "react";
-import { Form, Input, Button } from "antd";
+import { useState } from "react";
+import { Form, Input, Button, message } from "antd";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/app/store";
+import {schema} from "@/validations/paymentSchema"
+import styles from "@/styles/components/Checkout/paymentForm.module.scss";
+import CardInput from "./CardInput";
 
-interface Props {
-  onNext: (data: any) => void;
-  disabled?: boolean;
+interface FormValues {
+  cardName: string;
 }
 
-const PaymentForm: React.FC<Props> = ({ onNext, disabled }) => {
-  const [form] = Form.useForm();
+function PaymentForm() {
+  const paymentMethod = useSelector((state: RootState) => state.payment.method);
+  const disabled = paymentMethod === "cash";
+  const [cardError, setCardError] = useState<string | null>(null);
+  const stripe = useStripe();
+  const elements = useElements();
 
-  const onFinish = (values: any) => {
-    onNext(values);
+  const [loading, setLoading] = useState(false);
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: yupResolver(schema),
+  });
+
+  
+  const onSubmit = async (data: FormValues) => {
+    if (!stripe || !elements) {
+      message.error("Stripe not loaded yet!");
+      return;
+    }
+
+    setLoading(true);
+    message.loading("Processing your payment...", 1);
+
+    try {
+      const cardElement = elements.getElement(CardElement);
+      if (!cardElement) throw new Error("Card element not found");
+
+      // هنا هتعمل الـ PaymentIntent من السيرفر بتاعك
+      // في المثال ده بنعمل simulation بس
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
+        type: "card",
+        card: cardElement,
+        billing_details: { name: data.cardName },
+      });
+
+      if (error) {
+        throw new Error(error.message);
+      }
+
+      messageApi.open({
+        type: "success",
+        content: `Payment successful! (${paymentMethod.id})`,
+      });
+    } catch (err: any) {
+      messageApi.open({
+        type: "error",
+        content: err.message || "Payment failed!",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <Form
-      layout="vertical"
-      form={form}
-      disabled={disabled}
-      onFinish={onFinish}
-      variant="filled"
-    >
+    <Form layout="vertical" disabled={disabled || loading} variant="filled" onFinish={handleSubmit(onSubmit)}>
+      {contextHolder}
+
+      {/* Name on card */}
       <Form.Item
-        name="cardNumber"
-        label="Card Number"
-        rules={[{ required: true, message: "Please enter card number" }]}
+        label="Card Holder Name"
+        validateStatus={errors.cardName ? "error" : ""}
+        help={errors.cardName?.message}
       >
-        <Input placeholder="4242 4242 4242 4242" maxLength={19} />
+        <Controller
+          name="cardName"
+          control={control}
+          render={({ field }) => <Input {...field} placeholder="e.g. Mohamed Elsherbiny" />}
+        />
       </Form.Item>
 
-      <Form.Item
-        name="expiry"
-        label="Expiry Date"
-        rules={[{ required: true, message: "Enter expiry date" }]}
-      >
-        <Input placeholder="MM/YY" maxLength={5} />
+      
+     <Form.Item label="Card Details" help={cardError || ""} validateStatus={cardError ? "error" : ""}>  
+          <CardInput/> 
       </Form.Item>
 
-      <Form.Item
-        name="cvc"
-        label="CVC"
-        rules={[{ required: true, message: "Enter CVC" }]}
-      >
-        <Input placeholder="123" maxLength={3} />
-      </Form.Item>
-
-      <Button type="primary" htmlType="submit">
+      <Button type="primary" htmlType="submit" loading={loading} disabled={!stripe}>
         Save & Continue
       </Button>
     </Form>
   );
-};
+}
 
 export default PaymentForm;

@@ -1,119 +1,168 @@
-import React, { useEffect } from "react";
-import { Form, Input, Button, Checkbox, type CheckboxProps } from "antd";
+import { useEffect } from "react";
+import { Form, Input, Checkbox } from "antd";
+import { Controller, useForm, useWatch } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "@/app/store";
 
-interface Props {
-  onNext: (data: any) => void;
-}
+import {
+  clearShippingData,
+  setSaveInfo,
+  setShippingData,
+} from "@/features/products/paymentSlice";
+import { schema, type ShippingFormValues } from "@/validations/shippingSchema"
 
-const ShippingForm: React.FC<Props> = ({ onNext }) => {
-  const [form] = Form.useForm();
-  const [saveInfo, setSaveInfo] = React.useState(false);
+function ShippingForm() {
+  const user = useSelector((state: RootState) => state.auth.user);
+  const dispatch = useDispatch<AppDispatch>();
+  const shippingData = useSelector(
+    (state: RootState) => state.payment.shippingData
+  );
+  const saveInfo = useSelector((state: RootState) => state.payment.saveInfo);
 
-  
+  const {
+    control,
+    handleSubmit,
+    getValues,
+    reset,
+    formState: { errors },
+  } = useForm<ShippingFormValues>({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+    defaultValues: shippingData || {fullName:user?.name, address:user?.address, phone:user?.phone, },
+  });
+
+
+  const formValues = useWatch({ control });
   useEffect(() => {
-    const savedData = localStorage.getItem("shippingData");
-    if (savedData) {
-      const parsed = JSON.parse(savedData);
-      form.setFieldsValue(parsed);
+    const handler = setTimeout(() => {
+      const currentValues = getValues();
+      dispatch(setShippingData(currentValues));
+
+      if (saveInfo) {
+        localStorage.setItem("shippingData", JSON.stringify(currentValues));
+      }
+    }, 800);
+
+    return () => clearTimeout(handler);
+  }, [formValues, saveInfo, dispatch, getValues]);
+
+  useEffect(() => {
+    if (shippingData) {
+      reset(shippingData);
+      dispatch(setSaveInfo(saveInfo));
     }
-  }, [form]);
+  }, [shippingData, dispatch, reset]);
 
-  
-  const onChange: CheckboxProps["onChange"] = (e) => {
+  const handleCheckChange = (e: any) => {
     const checked = e.target.checked;
-    setSaveInfo(checked);
-
+    dispatch(setSaveInfo(checked));
     if (checked) {
-      const currentData = form.getFieldsValue();
-      localStorage.setItem("shippingData", JSON.stringify(currentData));
+      dispatch(setShippingData(getValues()));
     } else {
-      localStorage.removeItem("shippingData");
+      dispatch(clearShippingData());
     }
   };
 
-  
-  const onFinish = (values: any) => {
-    if (saveInfo) {
-      localStorage.setItem("shippingData", JSON.stringify(values));
-    }
-    onNext(values);
+  const onSubmit = (values: ShippingFormValues) => {
+    dispatch(setShippingData(values));
   };
 
   return (
-    <Form
-      layout="vertical"
-      form={form}
-      onFinish={onFinish}
-   
-      variant="filled"
-    >
+    <Form layout="vertical" onFinish={handleSubmit(onSubmit)} variant="filled">
       <Form.Item
-        name="fullName"
         label="Full Name"
-        rules={[{ required: true, message: "Please enter your name" }]}
+        validateStatus={errors.fullName ? "error" : ""}
+        help={errors.fullName?.message}
       >
-        <Input placeholder="John Doe" />
+        <Controller
+          name="fullName"
+          control={control}
+          render={({ field }) => <Input {...field} placeholder="John Doe" />}
+        />
       </Form.Item>
 
       <Form.Item
-        name="companyName"
         label="Company Name"
-        rules={[{ required: true, message: "Please enter the company name" }]}
+        validateStatus={errors.companyName ? "error" : ""}
+        help={errors.companyName?.message}
       >
-        <Input placeholder="Company" />
+        <Controller
+          name="companyName"
+          control={control}
+          render={({ field }) => <Input {...field} placeholder="Company" />}
+        />
       </Form.Item>
 
       <Form.Item
-        name="streetAddress"
         label="Street Address"
-        rules={[{ required: true, message: "Please enter your street address" }]}
+        validateStatus={errors.streetAddress ? "error" : ""}
+        help={errors.streetAddress?.message}
       >
-        <Input placeholder="123 Main St" />
+        <Controller
+          name="streetAddress"
+          control={control}
+          render={({ field }) => <Input {...field} placeholder="123 Main St" />}
+        />
       </Form.Item>
 
       <Form.Item
-        name="address"
         label="Address"
-        rules={[{ required: true, message: "Please enter your address" }]}
+        validateStatus={errors.address ? "error" : ""}
+        help={errors.address?.message}
       >
-        <Input placeholder="District, Area..." />
+        <Controller
+          name="address"
+          control={control}
+          render={({ field }) => (
+            <Input {...field} placeholder="District, Area..." />
+          )}
+        />
+      </Form.Item>
+
+      <Form.Item label="Apartment, floor, etc. (optional)">
+        <Controller
+          name="apartment"
+          control={control}
+          render={({ field }) => (
+            <Input {...field} placeholder="Apartment, Floor..." />
+          )}
+        />
       </Form.Item>
 
       <Form.Item
-        name="apartment"
-        label="Apartment, floor, etc. (optional)"
-      >
-        <Input placeholder="Apartment, Floor..." />
-      </Form.Item>
-
-      <Form.Item
-        name="city"
         label="Town/City"
-        rules={[{ required: true, message: "Please enter your city" }]}
+        validateStatus={errors.city ? "error" : ""}
+        help={errors.city?.message}
       >
-        <Input placeholder="Cairo" />
+        <Controller
+          name="city"
+          control={control}
+          render={({ field }) => <Input {...field} placeholder="Cairo" />}
+        />
       </Form.Item>
 
       <Form.Item
-        name="phone"
         label="Phone Number"
-        rules={[
-          { required: true, message: "Please enter your phone number" },
-          { pattern: /^[0-9]+$/, message: "Phone must contain only digits" },
-        ]}
+        validateStatus={errors.phone ? "error" : ""}
+        help={errors.phone?.message}
       >
-        <Input placeholder="01000000000" maxLength={11} />
+        <Controller
+          name="phone"
+          control={control}
+          render={({ field }) => (
+            <Input {...field} placeholder="01000000000" maxLength={11} />
+          )}
+        />
       </Form.Item>
 
-      <Checkbox onChange={onChange} checked={saveInfo}>
-        Save this information for faster check-out next time
-      </Checkbox>
-
-      <Button type="primary" htmlType="submit" style={{ marginTop: 16 }}>
-        Save & Continue
-      </Button>
+      <Form.Item>
+        <Checkbox checked={saveInfo} onChange={handleCheckChange}>
+          Save this information for faster check-out next time
+        </Checkbox>
+      </Form.Item>
     </Form>
   );
-};
+}
 
 export default ShippingForm;
