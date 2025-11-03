@@ -60,7 +60,10 @@ function Navbar() {
     ];
   }
 
-  const handleNavClick = (key: string) => setCurrent(key);
+  const handleNavClick = (key: string) => {
+    setDrawerOpen(false);
+    setCurrent(key)
+  };
   const toggleDrawer = (open: boolean) => setDrawerOpen(open);
 
   return (

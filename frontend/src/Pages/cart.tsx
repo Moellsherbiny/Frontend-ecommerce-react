@@ -8,6 +8,7 @@ import styles from "@/styles/components/Product/cartPage.module.scss";
 import { Link } from "react-router";
 import CouponCode from "@/Components/Products/CoponCode"
 import SEO from "@/Components/SEO";
+import Breadcrumbs from "@/Components/common/BreadCrumb";
 const { Title, Text } = Typography;
 
 type CartItem = {
@@ -97,7 +98,7 @@ const CartPage: React.FC = () => {
       />
       <div className={styles.cartPage}>
         <div className="container">
-          <Title level={3}>Shopping Cart</Title>
+          <Breadcrumbs chain={[{title:"Home"},{title:"Cart"}]} />
 
           <Table
             columns={columns}

@@ -39,7 +39,7 @@ function SignIn() {
     } catch {
       messageApi.open({
         type: "error",
-        content: error,
+        content: error || "user is not found",
       });
     }
   };

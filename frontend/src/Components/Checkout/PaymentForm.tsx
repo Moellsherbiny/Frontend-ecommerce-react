@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, message } from "antd";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -91,10 +91,6 @@ function PaymentForm() {
      <Form.Item label="Card Details">  
           <CardInput/> 
       </Form.Item>
-
-      <Button type="primary" htmlType="submit" loading={loading} disabled={!stripe}>
-        Save & Continue
-      </Button>
     </Form>
   );
 }

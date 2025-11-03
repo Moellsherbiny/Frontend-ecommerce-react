@@ -43,6 +43,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 20px;
+    transition: all 0.2s ease;
+    >div{
+      width: 100% !important;
+    }
   }
 
   .noItems {
